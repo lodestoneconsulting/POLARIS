@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_2c1808f0130028c781db44927fd6b025 {
+                #map_d56aa6516213c578b8e8b845bec44e9d {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -145,7 +145,7 @@
             margin-top: 0px !important; margin-right: 5px !important; }</style>
     
     <div style="position:fixed;bottom:5px;left:5px;z-index:1000;font-size:12px;background-color:transparent;">
-        <b>Script Version:</b> 3.1.8<br><b>Generated on:</b> 05/09/2026 02:00:02 (EDT)
+        <b>Script Version:</b> 3.1.8<br><b>Generated on:</b> 05/09/2026 02:46:30 (EDT)
     </div>
     
     <div id="zoom-indicator" style="position:fixed;bottom:17px;right:5px;z-index:999;
@@ -157,7 +157,7 @@
     (function() {
         function setupZoomIndicator() {
             try {
-                var mapObj = map_2c1808f0130028c781db44927fd6b025;
+                var mapObj = map_d56aa6516213c578b8e8b845bec44e9d;
                 function updateZoom() {
                     var el = document.getElementById("zoom-level");
                     if (el) el.textContent = mapObj.getZoom();
@@ -191,7 +191,7 @@
     <script>
     (function() {
         function hookCustomZoom() {
-            var mapObj = map_2c1808f0130028c781db44927fd6b025;
+            var mapObj = map_d56aa6516213c578b8e8b845bec44e9d;
             document.getElementById("cz-zoom-in").onclick  = function(e) { e.preventDefault(); mapObj.zoomIn(); };
             document.getElementById("cz-zoom-out").onclick = function(e) { e.preventDefault(); mapObj.zoomOut(); };
             document.getElementById("cz-reset").onclick    = function(e) {
@@ -206,11 +206,11 @@
     (function() {
         function setupAutoTileSwitch() {
             try {
-                var mapObj = map_2c1808f0130028c781db44927fd6b025;
+                var mapObj = map_d56aa6516213c578b8e8b845bec44e9d;
                 try { if (typeof mapObj.setMaxZoom==="function") mapObj.setMaxZoom(20);
                       mapObj.options.maxZoom = 20; } catch(e) {}
-                var esri = tile_layer_7b1ee8caad08b688cd88246688779b27;
-                var osm  = tile_layer_34240dcb136a1c26fbb4354dcde74003;
+                var esri = tile_layer_795704151186bce2274e9d25d158309d;
+                var osm  = tile_layer_68a2a3c709c75b888a17e6d778992ab2;
                 function switchToOSM()  { if (mapObj.hasLayer(esri)) mapObj.removeLayer(esri);
                                            if (!mapObj.hasLayer(osm)) mapObj.addLayer(osm); }
                 function switchToESRI() { if (mapObj.hasLayer(osm)) mapObj.removeLayer(osm);
@@ -232,7 +232,7 @@
                 var mapObj = Object.values(window).find(
                     function(v) { return v && typeof v==="object" && typeof v.getZoom==="function"; });
                 if (!mapObj) return;
-                var antennaLayer = window["feature_group_5ea4223369622930e102bdfa3afa3fdb"];
+                var antennaLayer = window["feature_group_37e55390aa6214782cf3d218b062ebf8"];
                 if (!antennaLayer) return;
                 function updateVisibility() {
                     var z = mapObj.getZoom();
@@ -248,7 +248,215 @@
     })();
     </script>
     
-            <div class="folium-map" id="map_2c1808f0130028c781db44927fd6b025" ></div>
+            <div class="folium-map" id="map_d56aa6516213c578b8e8b845bec44e9d" ></div>
+        
+    
+        <style>
+          .wx-widget {
+            position: fixed;            /* Changed from absolute to fixed for proper stacking */
+            top: 45px;
+            left: 5px;
+            z-index: 9999;
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            width: 256px;
+            max-width: 256px;
+          }
+          .wx-card {
+            background: rgba(255,255,255,0.92);
+            border: 1px solid rgba(0,0,0,0.15);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.14);
+            overflow: hidden;
+          }
+          .wx-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 10px;
+            cursor: pointer;
+            user-select: none;
+          }
+          .wx-title {
+            font-weight: 700;
+            font-size: 11.5px;
+          }
+          .wx-sub {
+            font-size: 10px;
+            opacity: 0.85;
+            margin-top: 2px;
+            line-height: 1.25;
+            word-break: break-word;
+          }
+          .wx-subline { white-space: normal; }
+          .wx-subline + .wx-subline { margin-top: 2px; }
+          .wx-chevron {
+            font-weight: 700;
+            padding-left: 8px;
+          }
+          .wx-body {
+            padding: 0 10px 10px 10px;
+            display: none;
+          }
+          .wx-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            padding: 5px 0;
+            border-top: 1px solid rgba(0,0,0,0.08);
+          }
+          .wx-row:first-child { border-top: none; }
+          .wx-k { opacity: 0.75; }
+          .wx-forecast { margin-top: 7px; }
+          .wx-day {
+            display: grid;
+            grid-template-columns: 74px 1fr;
+            gap: 6px;
+            padding: 5px 0;
+            border-top: 1px solid rgba(0,0,0,0.08);
+          }
+          .wx-day:first-child { border-top: none; }
+          .wx-day-date { font-weight: 700; }
+          .wx-small {
+            font-size: 10.5px;
+            opacity: 0.9;
+            line-height: 1.25;
+          }
+          .wx-muted {
+            font-size: 9.5px;
+            opacity: 0.65;
+            padding-top: 7px;
+          }
+        </style>
+
+        <div class="wx-widget">
+          <div class="wx-card">
+            <div class="wx-header" onclick="window.__wx_toggle()">
+              <div>
+                <div class="wx-title" id="wxTitle">Puget Island, WA - Weather</div>
+                <div class="wx-sub" id="wxSub">—</div>
+              </div>
+              <div class="wx-chevron" id="wxChevron">▾</div>
+            </div>
+            <div class="wx-body" id="wxBody">
+              <div id="wxCurrent"></div>
+              <div class="wx-forecast" id="wxForecast"></div>
+              <div class="wx-muted" id="wxFoot"></div>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          (function() {
+            const WX = {"generated_iso": "2026-05-09T06:46:33Z", "timezone": "America/Los_Angeles", "location_name": "Puget Island, WA", "current": {"temp_f": 51.4, "wind_kn": 0.0, "wind_dir": "360\u00b0", "summary": ""}, "days": [{"date": "2026-05-09", "high_f": 74, "low_f": 45, "wind_kn_avg": 2.8, "precip_chance_max": 0, "precip_in_total": 0.0, "solar": "med", "sun_hours": 10.0}, {"date": "2026-05-10", "high_f": 65, "low_f": 51, "wind_kn_avg": 7.4, "precip_chance_max": 0, "precip_in_total": 0.0, "solar": "med", "sun_hours": 8.7}, {"date": "2026-05-11", "high_f": 75, "low_f": 48, "wind_kn_avg": 3.4, "precip_chance_max": 0, "precip_in_total": 0.0, "solar": "med", "sun_hours": 14.3}, {"date": "2026-05-12", "high_f": 78, "low_f": 49, "wind_kn_avg": 4.2, "precip_chance_max": 20, "precip_in_total": 0.0, "solar": "med", "sun_hours": 14.3}, {"date": "2026-05-13", "high_f": 71, "low_f": 52, "wind_kn_avg": 6.6, "precip_chance_max": 20, "precip_in_total": 0.0, "solar": "med", "sun_hours": null}]};
+            window.__wx_open = false;
+
+            function isNum(x) {
+              return typeof x === "number" && !isNaN(x);
+            }
+
+            function fmt(v, suffix) {
+              if (v === null || v === undefined) return "—";
+              return String(v) + (suffix || "");
+            }
+
+            function fmtFixed(v, digits, suffix) {
+              if (!isNum(v)) return "—";
+              return v.toFixed(digits) + (suffix || "");
+            }
+
+            function fmtPrecipIn(d) {
+              if (isNum(d.precip_in_total)) return fmtFixed(d.precip_in_total, 2, " in");
+              if (isNum(d.precip_in)) return fmtFixed(d.precip_in, 2, " in");
+              if (isNum(d.precip_mm_total)) return fmtFixed(d.precip_mm_total / 25.4, 2, " in");
+              if (isNum(d.precip_mm)) return fmtFixed(d.precip_mm / 25.4, 2, " in");
+              return "—";
+            }
+
+            function fmtSunLine(d) {
+              // Prefer sun_hours if present
+              if (isNum(d.sun_hours)) return `Expected Sun: <b>${d.sun_hours.toFixed(1)} hrs</b>`;
+              // Fallback to your old bucket
+              if (d.solar) return `Sun: <b>${String(d.solar)}</b>`;
+              return `Expected Sun: <b>—</b>`;
+            }
+
+            function headerLineTempWind(c) {
+              const t = isNum(c.temp_f) ? `${c.temp_f.toFixed(0)}°F` : "—";
+              const w = isNum(c.wind_kn) ? `${c.wind_kn.toFixed(0)} kn` : "—";
+              const dir = c.wind_dir ? ` ${c.wind_dir}` : "";
+              return `Temp: ${t} • Wind: ${w}${dir}`;
+            }
+
+            function headerLineNow(c) {
+              const now = c.summary ? String(c.summary) : "—";
+              return `Now: ${now}`;
+            }
+
+            function build() {
+              document.getElementById("wxTitle").textContent = "Puget Island, WA - Weather";
+
+              const c = WX.current || {};
+
+              const line1 = headerLineTempWind(c);
+              const line2 = headerLineNow(c);
+
+              document.getElementById("wxSub").innerHTML =
+                `<div class="wx-subline">${line1}</div>` +
+                `<div class="wx-subline">${line2}</div>`;
+
+              const curLines = [];
+              curLines.push(`<div class="wx-row"><div class="wx-k">Temp</div><div><b>${fmtFixed(c.temp_f, 0, "°F")}</b></div></div>`);
+              curLines.push(`<div class="wx-row"><div class="wx-k">Wind</div><div><b>${fmtFixed(c.wind_kn, 0, " kn")}</b> ${fmt(c.wind_dir, "")}</div></div>`);
+              curLines.push(`<div class="wx-row"><div class="wx-k">Now</div><div>${fmt(c.summary, "")}</div></div>`);
+              document.getElementById("wxCurrent").innerHTML = curLines.join("");
+
+              const days = WX.days || [];
+              const fc = [];
+              if (!days.length) {
+                fc.push(`<div class="wx-row"><div>5-day forecast unavailable</div></div>`);
+              } else {
+                for (const d of days) {
+                  const dateLabel = d.date || "";
+                  const left = `<div class="wx-day-date">${dateLabel}</div>`;
+
+                  const precipChance = (d.precip_chance_max === null || d.precip_chance_max === undefined)
+                    ? "—"
+                    : String(d.precip_chance_max) + "%";
+
+                  const precipAmt = fmtPrecipIn(d);
+                  const sunLine = fmtSunLine(d);
+
+                  const right = `
+                    <div class="wx-small">
+                      High/Low: <b>${fmtFixed(d.high_f, 0, "°F")}</b> / <b>${fmtFixed(d.low_f, 0, "°F")}</b><br>
+                      Wind: <b>${fmtFixed(d.wind_kn_avg, 0, " kn")}</b><br>
+                      Precip: <b>${precipChance}</b> • <b>${precipAmt}</b><br>
+                      ${sunLine}
+                    </div>`;
+                  fc.push(`<div class="wx-day">${left}${right}</div>`);
+                }
+              }
+              document.getElementById("wxForecast").innerHTML = fc.join("");
+
+              const gen = WX.generated_iso ? ` • Generated: ${WX.generated_iso}` : "";
+              document.getElementById("wxFoot").textContent = `Source: NWS API (api.weather.gov)${gen}`;
+            }
+
+            window.__wx_toggle = function() {
+              window.__wx_open = !window.__wx_open;
+              document.getElementById("wxBody").style.display = window.__wx_open ? "block" : "none";
+              document.getElementById("wxChevron").textContent = window.__wx_open ? "▴" : "▾";
+              
+              // Notify site data gaps widget to reposition when weather expands/collapses
+              if (window.__dg_reposition) {
+                window.__dg_reposition();
+              }
+            };
+
+            build();
+          })();
+        </script>
         
     
         <style>
@@ -299,7 +507,7 @@
 
         <script>
           (function() {
-            const DG = {"generated_iso": "2026-05-08 22:00:30 PST", "start": "2026-05-01 21:28:05.000", "end": "2026-05-08 21:28:05.000", "days_back": 7, "bin_minutes": 30, "sites": [{"mc_id": "PD4", "bins": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2], "uptime_pct": 98.8}, {"mc_id": "PD5", "bins": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2], "uptime_pct": 99.1}, {"mc_id": "PD6", "bins": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2], "uptime_pct": 94.9}, {"mc_id": "PD7", "bins": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2], "uptime_pct": 98.5}, {"mc_id": "PD8", "bins": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2], "uptime_pct": 97.9}, {"mc_id": "PDC", "bins": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2], "uptime_pct": 97.9}, {"mc_id": "PDO", "bins": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2], "uptime_pct": 97.9}, {"mc_id": "PDW", "bins": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2], "uptime_pct": 97.9}, {"mc_id": "PP1", "bins": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], "uptime_pct": 98.2}], "warning": ""};
+            const DG = {"generated_iso": "2026-05-08 22:46:33 PST", "start": "2026-05-01 22:44:31.990", "end": "2026-05-08 22:44:31.990", "days_back": 7, "bin_minutes": 30, "sites": [{"mc_id": "PD4", "bins": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2], "uptime_pct": 99.4}, {"mc_id": "PD5", "bins": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2], "uptime_pct": 98.5}, {"mc_id": "PD6", "bins": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2], "uptime_pct": 94.9}, {"mc_id": "PD7", "bins": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2], "uptime_pct": 98.2}, {"mc_id": "PD8", "bins": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2], "uptime_pct": 98.2}, {"mc_id": "PDC", "bins": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], "uptime_pct": 98.2}, {"mc_id": "PDO", "bins": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2], "uptime_pct": 97.3}, {"mc_id": "PDW", "bins": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2], "uptime_pct": 98.2}, {"mc_id": "PP1", "bins": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2], "uptime_pct": 99.1}], "warning": ""};
             window.__dg_open = false;
 
             function esc(s) {
@@ -410,8 +618,8 @@
 <script>
     
     
-            var map_2c1808f0130028c781db44927fd6b025 = L.map(
-                "map_2c1808f0130028c781db44927fd6b025",
+            var map_d56aa6516213c578b8e8b845bec44e9d = L.map(
+                "map_d56aa6516213c578b8e8b845bec44e9d",
                 {
                     center: [46.17, -123.4],
                     crs: L.CRS.EPSG3857,
@@ -428,7 +636,7 @@
 
         
     
-            var tile_layer_34240dcb136a1c26fbb4354dcde74003 = L.tileLayer(
+            var tile_layer_68a2a3c709c75b888a17e6d778992ab2 = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 9,
@@ -445,7 +653,7 @@
             );
         
     
-            var tile_layer_7b1ee8caad08b688cd88246688779b27 = L.tileLayer(
+            var tile_layer_795704151186bce2274e9d25d158309d = L.tileLayer(
                 "https://server.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}",
                 {
   "minZoom": 11,
@@ -462,26 +670,26 @@
             );
         
     
-            tile_layer_7b1ee8caad08b688cd88246688779b27.addTo(map_2c1808f0130028c781db44927fd6b025);
+            tile_layer_795704151186bce2274e9d25d158309d.addTo(map_d56aa6516213c578b8e8b845bec44e9d);
         
     
-            L.terminator().addTo(map_2c1808f0130028c781db44927fd6b025);
+            L.terminator().addTo(map_d56aa6516213c578b8e8b845bec44e9d);
         
     
-            var feature_group_5ea4223369622930e102bdfa3afa3fdb = L.featureGroup(
+            var feature_group_37e55390aa6214782cf3d218b062ebf8 = L.featureGroup(
                 {
 }
             );
         
     
-            var marker_cf6b5f93f0711c483ada2a957484def9 = L.marker(
+            var marker_58ce945f4ee08cead1d025c8ec4114b7 = L.marker(
                 [46.252917, -123.440947],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_9ec2f9f7a2bcbc01f6bfd189f124e60e = L.AwesomeMarkers.icon(
+            var icon_e2d5441c8977f827611ce26a6f2a061c = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -492,34 +700,34 @@
             );
         
     
-        var popup_83ee0caa58a8135e1d95ccf84f087573 = L.popup({
+        var popup_d32cc6f7381a273ddfa02935226dbccd = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_803bb74fe51354dc7c35431823da5e80 = $(`<div id="html_803bb74fe51354dc7c35431823da5e80" style="width: 100.0%; height: 100.0%;">             <b>PD4 – Antenna 01</b><br>             <a href="PD4_antenna_01_tag_summary.html">View Tag Summary</a><br>             <a href="MPD4_N01_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:28:01.010 PST)</span><br>             Current: 8.3 A &nbsp;|&nbsp; Noise: 8.0%<br>             Rel. Phase: -10° &nbsp;|&nbsp; Capacitors: 200<br>             FDX-B: 7% &nbsp;|&nbsp; Temp: 20.6°C<br>             Tuning: Code 4</div>`)[0];
-                popup_83ee0caa58a8135e1d95ccf84f087573.setContent(html_803bb74fe51354dc7c35431823da5e80);
+                var html_4beccb9c22a7413ad0282f3050e71998 = $(`<div id="html_4beccb9c22a7413ad0282f3050e71998" style="width: 100.0%; height: 100.0%;">             <b>PD4 – Antenna 01</b><br>             <a href="PD4_antenna_01_tag_summary.html">View Tag Summary</a><br>             <a href="MPD4_N01_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:38:01.010 PST)</span><br>             Current: 8.7 A &nbsp;|&nbsp; Noise: 10.0%<br>             Rel. Phase: -7° &nbsp;|&nbsp; Capacitors: 211<br>             FDX-B: 10% &nbsp;|&nbsp; Temp: 21.2°C<br>             Tuning: Tuning</div>`)[0];
+                popup_d32cc6f7381a273ddfa02935226dbccd.setContent(html_4beccb9c22a7413ad0282f3050e71998);
             
         
 
-        marker_cf6b5f93f0711c483ada2a957484def9.bindPopup(popup_83ee0caa58a8135e1d95ccf84f087573)
+        marker_58ce945f4ee08cead1d025c8ec4114b7.bindPopup(popup_d32cc6f7381a273ddfa02935226dbccd)
         ;
 
         
     
     
-                marker_cf6b5f93f0711c483ada2a957484def9.setIcon(icon_9ec2f9f7a2bcbc01f6bfd189f124e60e);
+                marker_58ce945f4ee08cead1d025c8ec4114b7.setIcon(icon_e2d5441c8977f827611ce26a6f2a061c);
             
     
-            var marker_6aefd50cf24a6fe72361a55d069fed92 = L.marker(
+            var marker_5ccea07699fd2b0341fb6011ceca566e = L.marker(
                 [46.205256, -123.431702],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_1ec8d87aeca1aec8aab8f971b4018578 = L.AwesomeMarkers.icon(
+            var icon_5f3c919cd7ec34f5d9263309f9c25b59 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "black",
   "iconColor": "white",
@@ -530,34 +738,34 @@
             );
         
     
-        var popup_ae4962c883548056249f7a2c9f56ce4d = L.popup({
+        var popup_90504ea1a3f4e8bc9ff154c1bcee98b0 = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_0a27b22db08a9ac9939f60adebcefebb = $(`<div id="html_0a27b22db08a9ac9939f60adebcefebb" style="width: 100.0%; height: 100.0%;">             <b>PD5 – Antenna 03</b><br>             <a href="PD5_antenna_03_tag_summary.html">View Tag Summary</a><br>             <a href="MPD5_N03_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 06:31:15.030 PST)</span><br>             Current: 0.0 A &nbsp;|&nbsp; Noise: 0.0%<br>             Rel. Phase: +0° &nbsp;|&nbsp; Capacitors: 0<br>             FDX-B: 0% &nbsp;|&nbsp; Temp: 0.0°C<br>             Tuning: Normal</div>`)[0];
-                popup_ae4962c883548056249f7a2c9f56ce4d.setContent(html_0a27b22db08a9ac9939f60adebcefebb);
+                var html_15708692f0887e9aaf5a7a2b55c519c4 = $(`<div id="html_15708692f0887e9aaf5a7a2b55c519c4" style="width: 100.0%; height: 100.0%;">             <b>PD5 – Antenna 03</b><br>             <a href="PD5_antenna_03_tag_summary.html">View Tag Summary</a><br>             <a href="MPD5_N03_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 06:31:15.030 PST)</span><br>             Current: 0.0 A &nbsp;|&nbsp; Noise: 0.0%<br>             Rel. Phase: +0° &nbsp;|&nbsp; Capacitors: 0<br>             FDX-B: 0% &nbsp;|&nbsp; Temp: 0.0°C<br>             Tuning: Normal</div>`)[0];
+                popup_90504ea1a3f4e8bc9ff154c1bcee98b0.setContent(html_15708692f0887e9aaf5a7a2b55c519c4);
             
         
 
-        marker_6aefd50cf24a6fe72361a55d069fed92.bindPopup(popup_ae4962c883548056249f7a2c9f56ce4d)
+        marker_5ccea07699fd2b0341fb6011ceca566e.bindPopup(popup_90504ea1a3f4e8bc9ff154c1bcee98b0)
         ;
 
         
     
     
-                marker_6aefd50cf24a6fe72361a55d069fed92.setIcon(icon_1ec8d87aeca1aec8aab8f971b4018578);
+                marker_5ccea07699fd2b0341fb6011ceca566e.setIcon(icon_5f3c919cd7ec34f5d9263309f9c25b59);
             
     
-            var marker_d33044561fc04dfd8ed33c7d0acdcf60 = L.marker(
+            var marker_21d4d5bdd03b3dd672ff29779549fe60 = L.marker(
                 [46.205186, -123.431783],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_e58dbe0924ab50165378a2da5d4f5515 = L.AwesomeMarkers.icon(
+            var icon_b847502e5b5fafa4c8f097f669916653 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -568,34 +776,34 @@
             );
         
     
-        var popup_77d36bf56351b24693671ebc6b274521 = L.popup({
+        var popup_174c2e1f4799b1fb47b1b83e6b7ec165 = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_ab9f7d6a9d416cb748c86edd4188ac65 = $(`<div id="html_ab9f7d6a9d416cb748c86edd4188ac65" style="width: 100.0%; height: 100.0%;">             <b>PD5 – Antenna 04</b><br>             <a href="PD5_antenna_04_tag_summary.html">View Tag Summary</a><br>             <a href="MPD5_N04_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:21:15.030 PST)</span><br>             Current: 7.2 A &nbsp;|&nbsp; Noise: 11.0%<br>             Rel. Phase: +9° &nbsp;|&nbsp; Capacitors: 210<br>             FDX-B: 11% &nbsp;|&nbsp; Temp: 21.2°C<br>             Tuning: Tuning</div>`)[0];
-                popup_77d36bf56351b24693671ebc6b274521.setContent(html_ab9f7d6a9d416cb748c86edd4188ac65);
+                var html_b41eb6d63d21c40c668f8faaf4faff8b = $(`<div id="html_b41eb6d63d21c40c668f8faaf4faff8b" style="width: 100.0%; height: 100.0%;">             <b>PD5 – Antenna 04</b><br>             <a href="PD5_antenna_04_tag_summary.html">View Tag Summary</a><br>             <a href="MPD5_N04_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:31:15.030 PST)</span><br>             Current: 7.2 A &nbsp;|&nbsp; Noise: 14.0%<br>             Rel. Phase: -8° &nbsp;|&nbsp; Capacitors: 214<br>             FDX-B: 15% &nbsp;|&nbsp; Temp: 21.2°C<br>             Tuning: Tuning</div>`)[0];
+                popup_174c2e1f4799b1fb47b1b83e6b7ec165.setContent(html_b41eb6d63d21c40c668f8faaf4faff8b);
             
         
 
-        marker_d33044561fc04dfd8ed33c7d0acdcf60.bindPopup(popup_77d36bf56351b24693671ebc6b274521)
+        marker_21d4d5bdd03b3dd672ff29779549fe60.bindPopup(popup_174c2e1f4799b1fb47b1b83e6b7ec165)
         ;
 
         
     
     
-                marker_d33044561fc04dfd8ed33c7d0acdcf60.setIcon(icon_e58dbe0924ab50165378a2da5d4f5515);
+                marker_21d4d5bdd03b3dd672ff29779549fe60.setIcon(icon_b847502e5b5fafa4c8f097f669916653);
             
     
-            var marker_b69f8095b67513cc5fed7e221cd93fba = L.marker(
+            var marker_0836380da9ceff8595bbc509c60bd151 = L.marker(
                 [46.205115, -123.431865],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_e727e669b75f1fc7e3ba4d06d39583a5 = L.AwesomeMarkers.icon(
+            var icon_4d448fed1f9725e494668529c33c511c = L.AwesomeMarkers.icon(
                 {
   "markerColor": "red",
   "iconColor": "white",
@@ -606,36 +814,36 @@
             );
         
     
-        var popup_f7435e7fd72a100934701cd41eefadbb = L.popup({
+        var popup_835f9b84711069f4b5bf521abb0b972c = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_d2fe8ee18cd8aad192dfe2acf0291b38 = $(`<div id="html_d2fe8ee18cd8aad192dfe2acf0291b38" style="width: 100.0%; height: 100.0%;">             <b>PD5 – Antenna 05</b><br>             <a href="PD5_antenna_05_tag_summary.html">View Tag Summary</a><br>             <a href="MPD5_N05_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:21:15.030 PST)</span><br>             Current: 7.4 A &nbsp;|&nbsp; Noise: 82.0%<br>             Rel. Phase: +1° &nbsp;|&nbsp; Capacitors: 217<br>             FDX-B: 83% &nbsp;|&nbsp; Temp: 18.8°C<br>             Tuning: Tuning</div>`)[0];
-                popup_f7435e7fd72a100934701cd41eefadbb.setContent(html_d2fe8ee18cd8aad192dfe2acf0291b38);
+                var html_716af16dcff765bc15216dbde30c01f9 = $(`<div id="html_716af16dcff765bc15216dbde30c01f9" style="width: 100.0%; height: 100.0%;">             <b>PD5 – Antenna 05</b><br>             <a href="PD5_antenna_05_tag_summary.html">View Tag Summary</a><br>             <a href="MPD5_N05_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:31:15.030 PST)</span><br>             Current: 7.7 A &nbsp;|&nbsp; Noise: 83.0%<br>             Rel. Phase: +2° &nbsp;|&nbsp; Capacitors: 220<br>             FDX-B: 83% &nbsp;|&nbsp; Temp: 18.9°C<br>             Tuning: Tuning</div>`)[0];
+                popup_835f9b84711069f4b5bf521abb0b972c.setContent(html_716af16dcff765bc15216dbde30c01f9);
             
         
 
-        marker_b69f8095b67513cc5fed7e221cd93fba.bindPopup(popup_f7435e7fd72a100934701cd41eefadbb)
+        marker_0836380da9ceff8595bbc509c60bd151.bindPopup(popup_835f9b84711069f4b5bf521abb0b972c)
         ;
 
         
     
     
-                marker_b69f8095b67513cc5fed7e221cd93fba.setIcon(icon_e727e669b75f1fc7e3ba4d06d39583a5);
+                marker_0836380da9ceff8595bbc509c60bd151.setIcon(icon_4d448fed1f9725e494668529c33c511c);
             
     
-            var marker_06ca2d3c03b88715a8d6cba8cacd232d = L.marker(
+            var marker_90a1cc1a27d344f64cc2d5adc14e6a91 = L.marker(
                 [46.204959, -123.432044],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_3271987813fd32896f16eeff139d0313 = L.AwesomeMarkers.icon(
+            var icon_7d053603f3ece3a261e3411ca4e5d7ac = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "green",
+  "markerColor": "orange",
   "iconColor": "white",
   "icon": "info-sign",
   "prefix": "glyphicon",
@@ -644,34 +852,34 @@
             );
         
     
-        var popup_7a660c27dc18d32f2112dbbd125bf9a3 = L.popup({
+        var popup_ee77c75d26f49ca48feb78f494317b03 = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_7b6d678166f2fe93adae6b769aeb6a69 = $(`<div id="html_7b6d678166f2fe93adae6b769aeb6a69" style="width: 100.0%; height: 100.0%;">             <b>PD5 – Antenna 06</b><br>             <a href="PD5_antenna_06_tag_summary.html">View Tag Summary</a><br>             <a href="MPD5_N06_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:21:15.030 PST)</span><br>             Current: 7.9 A &nbsp;|&nbsp; Noise: 11.0%<br>             Rel. Phase: +2° &nbsp;|&nbsp; Capacitors: 200<br>             FDX-B: 10% &nbsp;|&nbsp; Temp: 20.2°C<br>             Tuning: Tuning</div>`)[0];
-                popup_7a660c27dc18d32f2112dbbd125bf9a3.setContent(html_7b6d678166f2fe93adae6b769aeb6a69);
+                var html_d579e85350d4d1ed1f639927b5515c28 = $(`<div id="html_d579e85350d4d1ed1f639927b5515c28" style="width: 100.0%; height: 100.0%;">             <b>PD5 – Antenna 06</b><br>             <a href="PD5_antenna_06_tag_summary.html">View Tag Summary</a><br>             <a href="MPD5_N06_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:31:15.030 PST)</span><br>             Current: 8.0 A &nbsp;|&nbsp; Noise: 19.0%<br>             Rel. Phase: -2° &nbsp;|&nbsp; Capacitors: 198<br>             FDX-B: 12% &nbsp;|&nbsp; Temp: 19.1°C<br>             Tuning: Tuning</div>`)[0];
+                popup_ee77c75d26f49ca48feb78f494317b03.setContent(html_d579e85350d4d1ed1f639927b5515c28);
             
         
 
-        marker_06ca2d3c03b88715a8d6cba8cacd232d.bindPopup(popup_7a660c27dc18d32f2112dbbd125bf9a3)
+        marker_90a1cc1a27d344f64cc2d5adc14e6a91.bindPopup(popup_ee77c75d26f49ca48feb78f494317b03)
         ;
 
         
     
     
-                marker_06ca2d3c03b88715a8d6cba8cacd232d.setIcon(icon_3271987813fd32896f16eeff139d0313);
+                marker_90a1cc1a27d344f64cc2d5adc14e6a91.setIcon(icon_7d053603f3ece3a261e3411ca4e5d7ac);
             
     
-            var marker_9cc9c048167ce271287e01fd0119d9af = L.marker(
+            var marker_6288d0d8f6166bca3f5b9530380dd0c0 = L.marker(
                 [46.204902, -123.432109],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_61022e62a5b9b13e08b705476a444917 = L.AwesomeMarkers.icon(
+            var icon_1bcb7de2ea8ab2454004487fa26b44a0 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -682,34 +890,34 @@
             );
         
     
-        var popup_59d8b84df5d460af157ec8210023d40d = L.popup({
+        var popup_6fd7283fdb9715395bed1b35529cabb7 = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_6f481967c1fc2b2dabf0632e76386a37 = $(`<div id="html_6f481967c1fc2b2dabf0632e76386a37" style="width: 100.0%; height: 100.0%;">             <b>PD5 – Antenna 07</b><br>             <a href="PD5_antenna_07_tag_summary.html">View Tag Summary</a><br>             <a href="MPD5_N07_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:21:15.030 PST)</span><br>             Current: 7.0 A &nbsp;|&nbsp; Noise: 10.0%<br>             Rel. Phase: -14° &nbsp;|&nbsp; Capacitors: 216<br>             FDX-B: 10% &nbsp;|&nbsp; Temp: 22.1°C<br>             Tuning: Tuning</div>`)[0];
-                popup_59d8b84df5d460af157ec8210023d40d.setContent(html_6f481967c1fc2b2dabf0632e76386a37);
+                var html_d3e91349c406fdfceb58761efd4416c5 = $(`<div id="html_d3e91349c406fdfceb58761efd4416c5" style="width: 100.0%; height: 100.0%;">             <b>PD5 – Antenna 07</b><br>             <a href="PD5_antenna_07_tag_summary.html">View Tag Summary</a><br>             <a href="MPD5_N07_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:31:15.030 PST)</span><br>             Current: 7.1 A &nbsp;|&nbsp; Noise: 10.0%<br>             Rel. Phase: -10° &nbsp;|&nbsp; Capacitors: 215<br>             FDX-B: 10% &nbsp;|&nbsp; Temp: 22.0°C<br>             Tuning: Code 4</div>`)[0];
+                popup_6fd7283fdb9715395bed1b35529cabb7.setContent(html_d3e91349c406fdfceb58761efd4416c5);
             
         
 
-        marker_9cc9c048167ce271287e01fd0119d9af.bindPopup(popup_59d8b84df5d460af157ec8210023d40d)
+        marker_6288d0d8f6166bca3f5b9530380dd0c0.bindPopup(popup_6fd7283fdb9715395bed1b35529cabb7)
         ;
 
         
     
     
-                marker_9cc9c048167ce271287e01fd0119d9af.setIcon(icon_61022e62a5b9b13e08b705476a444917);
+                marker_6288d0d8f6166bca3f5b9530380dd0c0.setIcon(icon_1bcb7de2ea8ab2454004487fa26b44a0);
             
     
-            var marker_e17517a2482e5c951c01f4e04ee39e8f = L.marker(
+            var marker_f8910395bae649e1969518d7e6b7133d = L.marker(
                 [46.20469, -123.432354],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_34b534defa1a1a6477bc8017df449d6c = L.AwesomeMarkers.icon(
+            var icon_57fbcc66cd103c7d06623d13a0abff2e = L.AwesomeMarkers.icon(
                 {
   "markerColor": "orange",
   "iconColor": "white",
@@ -720,36 +928,36 @@
             );
         
     
-        var popup_cfdc3df2c62e71c4ce687d6ccbb265c2 = L.popup({
+        var popup_7e4ff16fd89525a58188282046a6df45 = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_dd563ce629c9e10723334305c63af854 = $(`<div id="html_dd563ce629c9e10723334305c63af854" style="width: 100.0%; height: 100.0%;">             <b>PD5 – Antenna 0A</b><br>             <a href="PD5_antenna_0A_tag_summary.html">View Tag Summary</a><br>             <a href="MPD5_N0A_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:21:15.030 PST)</span><br>             Current: 4.7 A &nbsp;|&nbsp; Noise: 10.0%<br>             Rel. Phase: +3° &nbsp;|&nbsp; Capacitors: 304<br>             FDX-B: 10% &nbsp;|&nbsp; Temp: 21.7°C<br>             Tuning: Tuning</div>`)[0];
-                popup_cfdc3df2c62e71c4ce687d6ccbb265c2.setContent(html_dd563ce629c9e10723334305c63af854);
+                var html_42384c00dd7ae388564fe0cfaa080bb4 = $(`<div id="html_42384c00dd7ae388564fe0cfaa080bb4" style="width: 100.0%; height: 100.0%;">             <b>PD5 – Antenna 0A</b><br>             <a href="PD5_antenna_0A_tag_summary.html">View Tag Summary</a><br>             <a href="MPD5_N0A_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:31:15.030 PST)</span><br>             Current: 5.8 A &nbsp;|&nbsp; Noise: 12.0%<br>             Rel. Phase: -1° &nbsp;|&nbsp; Capacitors: 313<br>             FDX-B: 10% &nbsp;|&nbsp; Temp: 21.4°C<br>             Tuning: Tuning</div>`)[0];
+                popup_7e4ff16fd89525a58188282046a6df45.setContent(html_42384c00dd7ae388564fe0cfaa080bb4);
             
         
 
-        marker_e17517a2482e5c951c01f4e04ee39e8f.bindPopup(popup_cfdc3df2c62e71c4ce687d6ccbb265c2)
+        marker_f8910395bae649e1969518d7e6b7133d.bindPopup(popup_7e4ff16fd89525a58188282046a6df45)
         ;
 
         
     
     
-                marker_e17517a2482e5c951c01f4e04ee39e8f.setIcon(icon_34b534defa1a1a6477bc8017df449d6c);
+                marker_f8910395bae649e1969518d7e6b7133d.setIcon(icon_57fbcc66cd103c7d06623d13a0abff2e);
             
     
-            var marker_2925d46c39f421814332afffb4ea7691 = L.marker(
+            var marker_3f2f714ec482d7c14cca05342ac5887b = L.marker(
                 [46.2065, -123.431],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_3f524b98ce3f2ca947c629221c47dce7 = L.AwesomeMarkers.icon(
+            var icon_4652d53e14e6fd8fd1842ba760715a5e = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "green",
+  "markerColor": "red",
   "iconColor": "white",
   "icon": "info-sign",
   "prefix": "glyphicon",
@@ -758,34 +966,34 @@
             );
         
     
-        var popup_72799ceb91b2633d61a71553cd1e8cca = L.popup({
+        var popup_82145fccabab7b7d459d316738908055 = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_18cbfcac667ff3d06255d38eced4846b = $(`<div id="html_18cbfcac667ff3d06255d38eced4846b" style="width: 100.0%; height: 100.0%;">             <b>PD5 – Antenna 0B</b><br>             <a href="PD5_antenna_0B_tag_summary.html">View Tag Summary</a><br>             <a href="MPD5_N0B_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:21:15.030 PST)</span><br>             Current: 8.0 A &nbsp;|&nbsp; Noise: 15.0%<br>             Rel. Phase: +7° &nbsp;|&nbsp; Capacitors: 155<br>             FDX-B: 14% &nbsp;|&nbsp; Temp: 18.9°C<br>             Tuning: Tuning</div>`)[0];
-                popup_72799ceb91b2633d61a71553cd1e8cca.setContent(html_18cbfcac667ff3d06255d38eced4846b);
+                var html_41180d620c796c18f0b14ea4fa2d3900 = $(`<div id="html_41180d620c796c18f0b14ea4fa2d3900" style="width: 100.0%; height: 100.0%;">             <b>PD5 – Antenna 0B</b><br>             <a href="PD5_antenna_0B_tag_summary.html">View Tag Summary</a><br>             <a href="MPD5_N0B_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:31:15.030 PST)</span><br>             Current: 7.4 A &nbsp;|&nbsp; Noise: 23.0%<br>             Rel. Phase: +6° &nbsp;|&nbsp; Capacitors: 159<br>             FDX-B: 13% &nbsp;|&nbsp; Temp: 18.9°C<br>             Tuning: Tuning</div>`)[0];
+                popup_82145fccabab7b7d459d316738908055.setContent(html_41180d620c796c18f0b14ea4fa2d3900);
             
         
 
-        marker_2925d46c39f421814332afffb4ea7691.bindPopup(popup_72799ceb91b2633d61a71553cd1e8cca)
+        marker_3f2f714ec482d7c14cca05342ac5887b.bindPopup(popup_82145fccabab7b7d459d316738908055)
         ;
 
         
     
     
-                marker_2925d46c39f421814332afffb4ea7691.setIcon(icon_3f524b98ce3f2ca947c629221c47dce7);
+                marker_3f2f714ec482d7c14cca05342ac5887b.setIcon(icon_4652d53e14e6fd8fd1842ba760715a5e);
             
     
-            var marker_963b697d44a3807062bfe7724fcb7355 = L.marker(
+            var marker_442f3e3734e3a1d9fb31abef227ab162 = L.marker(
                 [46.2069, -123.431],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_6a34f56c887d27d5f5924a55043ab18f = L.AwesomeMarkers.icon(
+            var icon_eec967d1327f1778ec4259134834cf96 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -796,34 +1004,34 @@
             );
         
     
-        var popup_10128f53f67627bc033100aa2782b203 = L.popup({
+        var popup_eb2907e3452fc0ae640a0b1a155f10bc = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_3cb271edbabf420f85fe6a5b92cb7601 = $(`<div id="html_3cb271edbabf420f85fe6a5b92cb7601" style="width: 100.0%; height: 100.0%;">             <b>PD5 – Antenna 0C</b><br>             <a href="PD5_antenna_0C_tag_summary.html">View Tag Summary</a><br>             <a href="MPD5_N0C_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:21:15.030 PST)</span><br>             Current: 6.7 A &nbsp;|&nbsp; Noise: 8.0%<br>             Rel. Phase: +0° &nbsp;|&nbsp; Capacitors: 182<br>             FDX-B: 7% &nbsp;|&nbsp; Temp: 18.1°C<br>             Tuning: Tuning</div>`)[0];
-                popup_10128f53f67627bc033100aa2782b203.setContent(html_3cb271edbabf420f85fe6a5b92cb7601);
+                var html_ca05908fd108589a7c57101c6901043b = $(`<div id="html_ca05908fd108589a7c57101c6901043b" style="width: 100.0%; height: 100.0%;">             <b>PD5 – Antenna 0C</b><br>             <a href="PD5_antenna_0C_tag_summary.html">View Tag Summary</a><br>             <a href="MPD5_N0C_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:31:15.030 PST)</span><br>             Current: 7.4 A &nbsp;|&nbsp; Noise: 12.0%<br>             Rel. Phase: -1° &nbsp;|&nbsp; Capacitors: 183<br>             FDX-B: 13% &nbsp;|&nbsp; Temp: 17.5°C<br>             Tuning: Tuning</div>`)[0];
+                popup_eb2907e3452fc0ae640a0b1a155f10bc.setContent(html_ca05908fd108589a7c57101c6901043b);
             
         
 
-        marker_963b697d44a3807062bfe7724fcb7355.bindPopup(popup_10128f53f67627bc033100aa2782b203)
+        marker_442f3e3734e3a1d9fb31abef227ab162.bindPopup(popup_eb2907e3452fc0ae640a0b1a155f10bc)
         ;
 
         
     
     
-                marker_963b697d44a3807062bfe7724fcb7355.setIcon(icon_6a34f56c887d27d5f5924a55043ab18f);
+                marker_442f3e3734e3a1d9fb31abef227ab162.setIcon(icon_eec967d1327f1778ec4259134834cf96);
             
     
-            var marker_7aa7927224b7e85731bcbe8ac679b4b6 = L.marker(
+            var marker_e27f279194662ec3487b5c7f6b2fac92 = L.marker(
                 [46.152255, -123.385481],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_77256e2d15018f947b0b0a28ad9ec84c = L.AwesomeMarkers.icon(
+            var icon_6ac4f310693765f691e873d4b6ff5daf = L.AwesomeMarkers.icon(
                 {
   "markerColor": "black",
   "iconColor": "white",
@@ -834,34 +1042,34 @@
             );
         
     
-        var popup_78407651369832e13b2acb9a661ce5ac = L.popup({
+        var popup_229c7678584e7c46709dc446c97aa23f = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_1361dfb3b76de14463c56143b5431c4e = $(`<div id="html_1361dfb3b76de14463c56143b5431c4e" style="width: 100.0%; height: 100.0%;">             <b>PD6 – Antenna 01</b><br>             <a href="PD6_antenna_01_tag_summary.html">View Tag Summary</a><br>             <a href="MPD6_N01_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:24:00.030 PST)</span><br>             Current: 0.0 A &nbsp;|&nbsp; Noise: 0.0%<br>             Rel. Phase: +0° &nbsp;|&nbsp; Capacitors: 0<br>             FDX-B: 0% &nbsp;|&nbsp; Temp: 0.0°C<br>             Tuning: Normal</div>`)[0];
-                popup_78407651369832e13b2acb9a661ce5ac.setContent(html_1361dfb3b76de14463c56143b5431c4e);
+                var html_fe5fae4b0f637e8d38dfdab8ad49e4c7 = $(`<div id="html_fe5fae4b0f637e8d38dfdab8ad49e4c7" style="width: 100.0%; height: 100.0%;">             <b>PD6 – Antenna 01</b><br>             <a href="PD6_antenna_01_tag_summary.html">View Tag Summary</a><br>             <a href="MPD6_N01_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:34:00.030 PST)</span><br>             Current: 0.0 A &nbsp;|&nbsp; Noise: 0.0%<br>             Rel. Phase: +0° &nbsp;|&nbsp; Capacitors: 0<br>             FDX-B: 0% &nbsp;|&nbsp; Temp: 0.0°C<br>             Tuning: Normal</div>`)[0];
+                popup_229c7678584e7c46709dc446c97aa23f.setContent(html_fe5fae4b0f637e8d38dfdab8ad49e4c7);
             
         
 
-        marker_7aa7927224b7e85731bcbe8ac679b4b6.bindPopup(popup_78407651369832e13b2acb9a661ce5ac)
+        marker_e27f279194662ec3487b5c7f6b2fac92.bindPopup(popup_229c7678584e7c46709dc446c97aa23f)
         ;
 
         
     
     
-                marker_7aa7927224b7e85731bcbe8ac679b4b6.setIcon(icon_77256e2d15018f947b0b0a28ad9ec84c);
+                marker_e27f279194662ec3487b5c7f6b2fac92.setIcon(icon_6ac4f310693765f691e873d4b6ff5daf);
             
     
-            var marker_71e499bde924d2f6d7b7ad7c5afe9522 = L.marker(
+            var marker_fcab58c482b3ae78314b183f0cb7d3ec = L.marker(
                 [46.152238, -123.385334],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_e2631f3de8aab0bf3f358c555a041009 = L.AwesomeMarkers.icon(
+            var icon_beb9b85f98b45bb5255d792bce08d39d = L.AwesomeMarkers.icon(
                 {
   "markerColor": "black",
   "iconColor": "white",
@@ -872,34 +1080,34 @@
             );
         
     
-        var popup_48a5ba3ce75ecb2910ac1a73ed38d814 = L.popup({
+        var popup_53495ec4051dd1677495271f5b056907 = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_7652c7d6411ee73427fc894d638c946a = $(`<div id="html_7652c7d6411ee73427fc894d638c946a" style="width: 100.0%; height: 100.0%;">             <b>PD6 – Antenna 02</b><br>             <a href="PD6_antenna_02_tag_summary.html">View Tag Summary</a><br>             <a href="MPD6_N02_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:24:00.030 PST)</span><br>             Current: 0.0 A &nbsp;|&nbsp; Noise: 0.0%<br>             Rel. Phase: +0° &nbsp;|&nbsp; Capacitors: 0<br>             FDX-B: 0% &nbsp;|&nbsp; Temp: 0.0°C<br>             Tuning: Normal</div>`)[0];
-                popup_48a5ba3ce75ecb2910ac1a73ed38d814.setContent(html_7652c7d6411ee73427fc894d638c946a);
+                var html_2b510b74e6b68f0409940755d267ea02 = $(`<div id="html_2b510b74e6b68f0409940755d267ea02" style="width: 100.0%; height: 100.0%;">             <b>PD6 – Antenna 02</b><br>             <a href="PD6_antenna_02_tag_summary.html">View Tag Summary</a><br>             <a href="MPD6_N02_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:34:00.030 PST)</span><br>             Current: 0.0 A &nbsp;|&nbsp; Noise: 0.0%<br>             Rel. Phase: +0° &nbsp;|&nbsp; Capacitors: 0<br>             FDX-B: 0% &nbsp;|&nbsp; Temp: 0.0°C<br>             Tuning: Normal</div>`)[0];
+                popup_53495ec4051dd1677495271f5b056907.setContent(html_2b510b74e6b68f0409940755d267ea02);
             
         
 
-        marker_71e499bde924d2f6d7b7ad7c5afe9522.bindPopup(popup_48a5ba3ce75ecb2910ac1a73ed38d814)
+        marker_fcab58c482b3ae78314b183f0cb7d3ec.bindPopup(popup_53495ec4051dd1677495271f5b056907)
         ;
 
         
     
     
-                marker_71e499bde924d2f6d7b7ad7c5afe9522.setIcon(icon_e2631f3de8aab0bf3f358c555a041009);
+                marker_fcab58c482b3ae78314b183f0cb7d3ec.setIcon(icon_beb9b85f98b45bb5255d792bce08d39d);
             
     
-            var marker_209bc650933b32742368863eda5c3647 = L.marker(
+            var marker_ba28c360ecdfe43b1423d82583c44695 = L.marker(
                 [46.152221, -123.385187],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_6164c67e151a0c96e5e64813a3ae22b4 = L.AwesomeMarkers.icon(
+            var icon_28416c967a67e59239bc9174cfa813a3 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "black",
   "iconColor": "white",
@@ -910,34 +1118,34 @@
             );
         
     
-        var popup_705bb9359d51d090fcd4d1bd75f00148 = L.popup({
+        var popup_c806682e2c8b3e22fead26d1cc8415ee = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_daf47af596ba31cd5de9ebd68a78fcbc = $(`<div id="html_daf47af596ba31cd5de9ebd68a78fcbc" style="width: 100.0%; height: 100.0%;">             <b>PD6 – Antenna 03</b><br>             <a href="PD6_antenna_03_tag_summary.html">View Tag Summary</a><br>             <a href="MPD6_N03_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:24:00.030 PST)</span><br>             Current: 0.0 A &nbsp;|&nbsp; Noise: 0.0%<br>             Rel. Phase: +0° &nbsp;|&nbsp; Capacitors: 0<br>             FDX-B: 0% &nbsp;|&nbsp; Temp: 0.0°C<br>             Tuning: Normal</div>`)[0];
-                popup_705bb9359d51d090fcd4d1bd75f00148.setContent(html_daf47af596ba31cd5de9ebd68a78fcbc);
+                var html_3a7d479fd3c2e8262d661be19c018802 = $(`<div id="html_3a7d479fd3c2e8262d661be19c018802" style="width: 100.0%; height: 100.0%;">             <b>PD6 – Antenna 03</b><br>             <a href="PD6_antenna_03_tag_summary.html">View Tag Summary</a><br>             <a href="MPD6_N03_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:34:00.030 PST)</span><br>             Current: 0.0 A &nbsp;|&nbsp; Noise: 0.0%<br>             Rel. Phase: +0° &nbsp;|&nbsp; Capacitors: 0<br>             FDX-B: 0% &nbsp;|&nbsp; Temp: 0.0°C<br>             Tuning: Normal</div>`)[0];
+                popup_c806682e2c8b3e22fead26d1cc8415ee.setContent(html_3a7d479fd3c2e8262d661be19c018802);
             
         
 
-        marker_209bc650933b32742368863eda5c3647.bindPopup(popup_705bb9359d51d090fcd4d1bd75f00148)
+        marker_ba28c360ecdfe43b1423d82583c44695.bindPopup(popup_c806682e2c8b3e22fead26d1cc8415ee)
         ;
 
         
     
     
-                marker_209bc650933b32742368863eda5c3647.setIcon(icon_6164c67e151a0c96e5e64813a3ae22b4);
+                marker_ba28c360ecdfe43b1423d82583c44695.setIcon(icon_28416c967a67e59239bc9174cfa813a3);
             
     
-            var marker_2e9e7dbcc9fe4abc771798b26f087463 = L.marker(
+            var marker_31feba65d93c8692bf1c9b893a36cb4c = L.marker(
                 [46.152187, -123.384893],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_6232f71d516c23f891c28157ee1a8ce6 = L.AwesomeMarkers.icon(
+            var icon_6b3b3d46740de91865cb6f9d247af540 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "black",
   "iconColor": "white",
@@ -948,34 +1156,34 @@
             );
         
     
-        var popup_9cc77dd131ab2e3ba0d6c6fea34f793d = L.popup({
+        var popup_fb03cf0d9bae19fb0a5990d5b8dc999a = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_679ed4dcf2bee3fde323cbb3366cc028 = $(`<div id="html_679ed4dcf2bee3fde323cbb3366cc028" style="width: 100.0%; height: 100.0%;">             <b>PD6 – Antenna 05</b><br>             <a href="PD6_antenna_05_tag_summary.html">View Tag Summary</a><br>             <a href="MPD6_N05_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:24:00.030 PST)</span><br>             Current: 0.0 A &nbsp;|&nbsp; Noise: 0.0%<br>             Rel. Phase: +0° &nbsp;|&nbsp; Capacitors: 0<br>             FDX-B: 0% &nbsp;|&nbsp; Temp: 0.0°C<br>             Tuning: Normal</div>`)[0];
-                popup_9cc77dd131ab2e3ba0d6c6fea34f793d.setContent(html_679ed4dcf2bee3fde323cbb3366cc028);
+                var html_14e1a30d1f2720897f78e44bd566e11f = $(`<div id="html_14e1a30d1f2720897f78e44bd566e11f" style="width: 100.0%; height: 100.0%;">             <b>PD6 – Antenna 05</b><br>             <a href="PD6_antenna_05_tag_summary.html">View Tag Summary</a><br>             <a href="MPD6_N05_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:34:00.030 PST)</span><br>             Current: 0.0 A &nbsp;|&nbsp; Noise: 0.0%<br>             Rel. Phase: +0° &nbsp;|&nbsp; Capacitors: 0<br>             FDX-B: 0% &nbsp;|&nbsp; Temp: 0.0°C<br>             Tuning: Normal</div>`)[0];
+                popup_fb03cf0d9bae19fb0a5990d5b8dc999a.setContent(html_14e1a30d1f2720897f78e44bd566e11f);
             
         
 
-        marker_2e9e7dbcc9fe4abc771798b26f087463.bindPopup(popup_9cc77dd131ab2e3ba0d6c6fea34f793d)
+        marker_31feba65d93c8692bf1c9b893a36cb4c.bindPopup(popup_fb03cf0d9bae19fb0a5990d5b8dc999a)
         ;
 
         
     
     
-                marker_2e9e7dbcc9fe4abc771798b26f087463.setIcon(icon_6232f71d516c23f891c28157ee1a8ce6);
+                marker_31feba65d93c8692bf1c9b893a36cb4c.setIcon(icon_6b3b3d46740de91865cb6f9d247af540);
             
     
-            var marker_dc2b297c3587bf67522aac636b295eb1 = L.marker(
+            var marker_25bc241fbfe25aa52e5af2267be24ebb = L.marker(
                 [46.15212, -123.384305],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_833afb4aef449c164c1ee7b4fbf2f667 = L.AwesomeMarkers.icon(
+            var icon_a8ef3d0e17097e6269300d5128581742 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "orange",
   "iconColor": "white",
@@ -986,34 +1194,34 @@
             );
         
     
-        var popup_e79bc614f2d0be0e6d59f023ac1b17c7 = L.popup({
+        var popup_60514d64bb931ced8ac11f8f0e0892a4 = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_3c010bdb905ab2c98d4c3de6ffa708bb = $(`<div id="html_3c010bdb905ab2c98d4c3de6ffa708bb" style="width: 100.0%; height: 100.0%;">             <b>PD6 – Antenna 08</b><br>             <a href="PD6_antenna_08_tag_summary.html">View Tag Summary</a><br>             <a href="MPD6_N08_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:24:00.030 PST)</span><br>             Current: 7.7 A &nbsp;|&nbsp; Noise: 19.0%<br>             Rel. Phase: +3° &nbsp;|&nbsp; Capacitors: 153<br>             FDX-B: 17% &nbsp;|&nbsp; Temp: 19.7°C<br>             Tuning: Tuning</div>`)[0];
-                popup_e79bc614f2d0be0e6d59f023ac1b17c7.setContent(html_3c010bdb905ab2c98d4c3de6ffa708bb);
+                var html_c2a79fb2ed17432cff84e1afa5ec0cd2 = $(`<div id="html_c2a79fb2ed17432cff84e1afa5ec0cd2" style="width: 100.0%; height: 100.0%;">             <b>PD6 – Antenna 08</b><br>             <a href="PD6_antenna_08_tag_summary.html">View Tag Summary</a><br>             <a href="MPD6_N08_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:34:00.030 PST)</span><br>             Current: 7.8 A &nbsp;|&nbsp; Noise: 16.0%<br>             Rel. Phase: +5° &nbsp;|&nbsp; Capacitors: 154<br>             FDX-B: 15% &nbsp;|&nbsp; Temp: 18.6°C<br>             Tuning: Code 4</div>`)[0];
+                popup_60514d64bb931ced8ac11f8f0e0892a4.setContent(html_c2a79fb2ed17432cff84e1afa5ec0cd2);
             
         
 
-        marker_dc2b297c3587bf67522aac636b295eb1.bindPopup(popup_e79bc614f2d0be0e6d59f023ac1b17c7)
+        marker_25bc241fbfe25aa52e5af2267be24ebb.bindPopup(popup_60514d64bb931ced8ac11f8f0e0892a4)
         ;
 
         
     
     
-                marker_dc2b297c3587bf67522aac636b295eb1.setIcon(icon_833afb4aef449c164c1ee7b4fbf2f667);
+                marker_25bc241fbfe25aa52e5af2267be24ebb.setIcon(icon_a8ef3d0e17097e6269300d5128581742);
             
     
-            var marker_23a655ab1f9e8fc9b210d38acbad22e1 = L.marker(
+            var marker_6a909f7fd04d4b6960f1d00b9b7ac1fd = L.marker(
                 [46.152103, -123.384158],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_0e2f0a481feaa2bea1aed7e366c652d1 = L.AwesomeMarkers.icon(
+            var icon_b9aad364705db7b622b2f826c61aee90 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -1024,34 +1232,34 @@
             );
         
     
-        var popup_a52c6f870d17a346d80e28ecdf717713 = L.popup({
+        var popup_173906b1335d72cd48908abacecad2f7 = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_41091a0b4ce67a9eb9d9deaf13af0a6b = $(`<div id="html_41091a0b4ce67a9eb9d9deaf13af0a6b" style="width: 100.0%; height: 100.0%;">             <b>PD6 – Antenna 09</b><br>             <a href="PD6_antenna_09_tag_summary.html">View Tag Summary</a><br>             <a href="MPD6_N09_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:24:00.030 PST)</span><br>             Current: 7.8 A &nbsp;|&nbsp; Noise: 7.0%<br>             Rel. Phase: -11° &nbsp;|&nbsp; Capacitors: 172<br>             FDX-B: 8% &nbsp;|&nbsp; Temp: 19.7°C<br>             Tuning: Tuning</div>`)[0];
-                popup_a52c6f870d17a346d80e28ecdf717713.setContent(html_41091a0b4ce67a9eb9d9deaf13af0a6b);
+                var html_80d2cc4086840353d9993a1df2683b34 = $(`<div id="html_80d2cc4086840353d9993a1df2683b34" style="width: 100.0%; height: 100.0%;">             <b>PD6 – Antenna 09</b><br>             <a href="PD6_antenna_09_tag_summary.html">View Tag Summary</a><br>             <a href="MPD6_N09_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:34:00.030 PST)</span><br>             Current: 7.9 A &nbsp;|&nbsp; Noise: 8.0%<br>             Rel. Phase: +6° &nbsp;|&nbsp; Capacitors: 171<br>             FDX-B: 8% &nbsp;|&nbsp; Temp: 19.5°C<br>             Tuning: Tuning</div>`)[0];
+                popup_173906b1335d72cd48908abacecad2f7.setContent(html_80d2cc4086840353d9993a1df2683b34);
             
         
 
-        marker_23a655ab1f9e8fc9b210d38acbad22e1.bindPopup(popup_a52c6f870d17a346d80e28ecdf717713)
+        marker_6a909f7fd04d4b6960f1d00b9b7ac1fd.bindPopup(popup_173906b1335d72cd48908abacecad2f7)
         ;
 
         
     
     
-                marker_23a655ab1f9e8fc9b210d38acbad22e1.setIcon(icon_0e2f0a481feaa2bea1aed7e366c652d1);
+                marker_6a909f7fd04d4b6960f1d00b9b7ac1fd.setIcon(icon_b9aad364705db7b622b2f826c61aee90);
             
     
-            var marker_25aec0ffe7bebfac65b80c06cd2cff2c = L.marker(
+            var marker_e54f292d5bef6118c4402a1cf7a60098 = L.marker(
                 [46.152086, -123.384011],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_219534e3a4ec73bdceb6466636692bfb = L.AwesomeMarkers.icon(
+            var icon_16659c8294eac0607676ce4a9d8947a0 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -1062,34 +1270,34 @@
             );
         
     
-        var popup_9df4302badbdafdee553d625ad0aec44 = L.popup({
+        var popup_4363a2963a27935dcdc2303bb2b946c3 = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_412cea61ac82db7befabc54155504729 = $(`<div id="html_412cea61ac82db7befabc54155504729" style="width: 100.0%; height: 100.0%;">             <b>PD6 – Antenna 0A</b><br>             <a href="PD6_antenna_0A_tag_summary.html">View Tag Summary</a><br>             <a href="MPD6_N0A_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:24:00.030 PST)</span><br>             Current: 7.0 A &nbsp;|&nbsp; Noise: 9.0%<br>             Rel. Phase: -4° &nbsp;|&nbsp; Capacitors: 207<br>             FDX-B: 10% &nbsp;|&nbsp; Temp: 19.4°C<br>             Tuning: Tuning</div>`)[0];
-                popup_9df4302badbdafdee553d625ad0aec44.setContent(html_412cea61ac82db7befabc54155504729);
+                var html_1d94bed5f476b018f9a82c3bdac6a36e = $(`<div id="html_1d94bed5f476b018f9a82c3bdac6a36e" style="width: 100.0%; height: 100.0%;">             <b>PD6 – Antenna 0A</b><br>             <a href="PD6_antenna_0A_tag_summary.html">View Tag Summary</a><br>             <a href="MPD6_N0A_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:34:00.030 PST)</span><br>             Current: 7.1 A &nbsp;|&nbsp; Noise: 12.0%<br>             Rel. Phase: +1° &nbsp;|&nbsp; Capacitors: 201<br>             FDX-B: 10% &nbsp;|&nbsp; Temp: 19.2°C<br>             Tuning: Tuning</div>`)[0];
+                popup_4363a2963a27935dcdc2303bb2b946c3.setContent(html_1d94bed5f476b018f9a82c3bdac6a36e);
             
         
 
-        marker_25aec0ffe7bebfac65b80c06cd2cff2c.bindPopup(popup_9df4302badbdafdee553d625ad0aec44)
+        marker_e54f292d5bef6118c4402a1cf7a60098.bindPopup(popup_4363a2963a27935dcdc2303bb2b946c3)
         ;
 
         
     
     
-                marker_25aec0ffe7bebfac65b80c06cd2cff2c.setIcon(icon_219534e3a4ec73bdceb6466636692bfb);
+                marker_e54f292d5bef6118c4402a1cf7a60098.setIcon(icon_16659c8294eac0607676ce4a9d8947a0);
             
     
-            var marker_df6f89248b03e4de05c7423248cbb08d = L.marker(
+            var marker_37050cb4ffd52d9a37efa6957bc98c10 = L.marker(
                 [46.152052, -123.383717],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_20ab60d935158c67e7f95e5de5666fb6 = L.AwesomeMarkers.icon(
+            var icon_ef342a186514c71d238606822fe5650c = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -1100,34 +1308,34 @@
             );
         
     
-        var popup_cc0de16257801e399b64648f3549ecc8 = L.popup({
+        var popup_e5ff77b214a9681f787160e28eb012ee = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_21508d44ec9d60e98d4570c3ed5ec32c = $(`<div id="html_21508d44ec9d60e98d4570c3ed5ec32c" style="width: 100.0%; height: 100.0%;">             <b>PD6 – Antenna 0C</b><br>             <a href="PD6_antenna_0C_tag_summary.html">View Tag Summary</a><br>             <a href="MPD6_N0C_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:24:00.030 PST)</span><br>             Current: 7.1 A &nbsp;|&nbsp; Noise: 8.0%<br>             Rel. Phase: +1° &nbsp;|&nbsp; Capacitors: 218<br>             FDX-B: 8% &nbsp;|&nbsp; Temp: 22.1°C<br>             Tuning: Tuning</div>`)[0];
-                popup_cc0de16257801e399b64648f3549ecc8.setContent(html_21508d44ec9d60e98d4570c3ed5ec32c);
+                var html_3d775ba38eb5098fcb4fdb0835fc1a18 = $(`<div id="html_3d775ba38eb5098fcb4fdb0835fc1a18" style="width: 100.0%; height: 100.0%;">             <b>PD6 – Antenna 0C</b><br>             <a href="PD6_antenna_0C_tag_summary.html">View Tag Summary</a><br>             <a href="MPD6_N0C_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:34:00.030 PST)</span><br>             Current: 7.3 A &nbsp;|&nbsp; Noise: 12.0%<br>             Rel. Phase: +4° &nbsp;|&nbsp; Capacitors: 227<br>             FDX-B: 11% &nbsp;|&nbsp; Temp: 22.1°C<br>             Tuning: Tuning</div>`)[0];
+                popup_e5ff77b214a9681f787160e28eb012ee.setContent(html_3d775ba38eb5098fcb4fdb0835fc1a18);
             
         
 
-        marker_df6f89248b03e4de05c7423248cbb08d.bindPopup(popup_cc0de16257801e399b64648f3549ecc8)
+        marker_37050cb4ffd52d9a37efa6957bc98c10.bindPopup(popup_e5ff77b214a9681f787160e28eb012ee)
         ;
 
         
     
     
-                marker_df6f89248b03e4de05c7423248cbb08d.setIcon(icon_20ab60d935158c67e7f95e5de5666fb6);
+                marker_37050cb4ffd52d9a37efa6957bc98c10.setIcon(icon_ef342a186514c71d238606822fe5650c);
             
     
-            var marker_ea404c0d5b3f916dfb405de5b9e1afe1 = L.marker(
+            var marker_0bc4c493719900cf5cfa32d71da44ad8 = L.marker(
                 [46.146588, -123.379969],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_76646c513f1ac485365d981e8ecfd554 = L.AwesomeMarkers.icon(
+            var icon_5106a32a8d8380ea6496056ceaaa8cd5 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -1138,34 +1346,34 @@
             );
         
     
-        var popup_68786f6c83f26ba8e5c27fbf308e865b = L.popup({
+        var popup_c5caba73b37a18e94616f1da7f8f2cd0 = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_ecf5e90b35edbf6157d2bc9086a892bd = $(`<div id="html_ecf5e90b35edbf6157d2bc9086a892bd" style="width: 100.0%; height: 100.0%;">             <b>PD7 – Antenna 01</b><br>             <a href="PD7_antenna_01_tag_summary.html">View Tag Summary</a><br>             <a href="MPD7_N01_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:16:57.020 PST)</span><br>             Current: 8.2 A &nbsp;|&nbsp; Noise: 10.0%<br>             Rel. Phase: +3° &nbsp;|&nbsp; Capacitors: 150<br>             FDX-B: 10% &nbsp;|&nbsp; Temp: 22.7°C<br>             Tuning: Tuning</div>`)[0];
-                popup_68786f6c83f26ba8e5c27fbf308e865b.setContent(html_ecf5e90b35edbf6157d2bc9086a892bd);
+                var html_d2b6f8df3ca5325942a61ceb6fec5a01 = $(`<div id="html_d2b6f8df3ca5325942a61ceb6fec5a01" style="width: 100.0%; height: 100.0%;">             <b>PD7 – Antenna 01</b><br>             <a href="PD7_antenna_01_tag_summary.html">View Tag Summary</a><br>             <a href="MPD7_N01_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:36:57.020 PST)</span><br>             Current: 8.0 A &nbsp;|&nbsp; Noise: 11.0%<br>             Rel. Phase: +3° &nbsp;|&nbsp; Capacitors: 141<br>             FDX-B: 10% &nbsp;|&nbsp; Temp: 22.5°C<br>             Tuning: Tuning</div>`)[0];
+                popup_c5caba73b37a18e94616f1da7f8f2cd0.setContent(html_d2b6f8df3ca5325942a61ceb6fec5a01);
             
         
 
-        marker_ea404c0d5b3f916dfb405de5b9e1afe1.bindPopup(popup_68786f6c83f26ba8e5c27fbf308e865b)
+        marker_0bc4c493719900cf5cfa32d71da44ad8.bindPopup(popup_c5caba73b37a18e94616f1da7f8f2cd0)
         ;
 
         
     
     
-                marker_ea404c0d5b3f916dfb405de5b9e1afe1.setIcon(icon_76646c513f1ac485365d981e8ecfd554);
+                marker_0bc4c493719900cf5cfa32d71da44ad8.setIcon(icon_5106a32a8d8380ea6496056ceaaa8cd5);
             
     
-            var marker_d45131c4c91c13617ee863c3675bc8b7 = L.marker(
+            var marker_8db53392b320203509c99148e029f642 = L.marker(
                 [46.146566, -123.379911],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_dfb8a0ebc1db088564e87058938a80f1 = L.AwesomeMarkers.icon(
+            var icon_12876b34c0405be8f59116c413e31ed8 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -1176,34 +1384,34 @@
             );
         
     
-        var popup_078b6b07d2eca5d10beadd95d7e48b9d = L.popup({
+        var popup_6cb81d64b9677b222ce321960f1f7c1e = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_80ef7a04ab55a526ae7641566046e438 = $(`<div id="html_80ef7a04ab55a526ae7641566046e438" style="width: 100.0%; height: 100.0%;">             <b>PD7 – Antenna 03</b><br>             <a href="PD7_antenna_03_tag_summary.html">View Tag Summary</a><br>             <a href="MPD7_N03_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:16:57.020 PST)</span><br>             Current: 7.7 A &nbsp;|&nbsp; Noise: 7.0%<br>             Rel. Phase: +3° &nbsp;|&nbsp; Capacitors: 256<br>             FDX-B: 8% &nbsp;|&nbsp; Temp: 17.6°C<br>             Tuning: Tuning</div>`)[0];
-                popup_078b6b07d2eca5d10beadd95d7e48b9d.setContent(html_80ef7a04ab55a526ae7641566046e438);
+                var html_c5b4054874bf1d14de12c49c7e4f058a = $(`<div id="html_c5b4054874bf1d14de12c49c7e4f058a" style="width: 100.0%; height: 100.0%;">             <b>PD7 – Antenna 03</b><br>             <a href="PD7_antenna_03_tag_summary.html">View Tag Summary</a><br>             <a href="MPD7_N03_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:36:57.020 PST)</span><br>             Current: 7.8 A &nbsp;|&nbsp; Noise: 8.0%<br>             Rel. Phase: -8° &nbsp;|&nbsp; Capacitors: 282<br>             FDX-B: 8% &nbsp;|&nbsp; Temp: 17.5°C<br>             Tuning: Tuning</div>`)[0];
+                popup_6cb81d64b9677b222ce321960f1f7c1e.setContent(html_c5b4054874bf1d14de12c49c7e4f058a);
             
         
 
-        marker_d45131c4c91c13617ee863c3675bc8b7.bindPopup(popup_078b6b07d2eca5d10beadd95d7e48b9d)
+        marker_8db53392b320203509c99148e029f642.bindPopup(popup_6cb81d64b9677b222ce321960f1f7c1e)
         ;
 
         
     
     
-                marker_d45131c4c91c13617ee863c3675bc8b7.setIcon(icon_dfb8a0ebc1db088564e87058938a80f1);
+                marker_8db53392b320203509c99148e029f642.setIcon(icon_12876b34c0405be8f59116c413e31ed8);
             
     
-            var marker_923d4d290a35eb8f13bf9a13347d193f = L.marker(
+            var marker_8690990529f57c763d20adeeb90f1500 = L.marker(
                 [46.146517, -123.379953],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_4f546c994890d9970fad4fd65acedf59 = L.AwesomeMarkers.icon(
+            var icon_e72731d867751f4e4fe114486d809262 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -1214,34 +1422,34 @@
             );
         
     
-        var popup_34c610bd6d52e967e067bcbda08ebddd = L.popup({
+        var popup_9b293d34d832f6dac7655f227c27c60f = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_ecdee33850b2108e2bf16e47a631b82b = $(`<div id="html_ecdee33850b2108e2bf16e47a631b82b" style="width: 100.0%; height: 100.0%;">             <b>PD7 – Antenna 05</b><br>             <a href="PD7_antenna_05_tag_summary.html">View Tag Summary</a><br>             <a href="MPD7_N05_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:16:57.020 PST)</span><br>             Current: 7.2 A &nbsp;|&nbsp; Noise: 8.0%<br>             Rel. Phase: +10° &nbsp;|&nbsp; Capacitors: 142<br>             FDX-B: 8% &nbsp;|&nbsp; Temp: 19.9°C<br>             Tuning: Tuning</div>`)[0];
-                popup_34c610bd6d52e967e067bcbda08ebddd.setContent(html_ecdee33850b2108e2bf16e47a631b82b);
+                var html_c2404b0e3f7434140f6c4ddc7241de72 = $(`<div id="html_c2404b0e3f7434140f6c4ddc7241de72" style="width: 100.0%; height: 100.0%;">             <b>PD7 – Antenna 05</b><br>             <a href="PD7_antenna_05_tag_summary.html">View Tag Summary</a><br>             <a href="MPD7_N05_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:36:57.020 PST)</span><br>             Current: 7.5 A &nbsp;|&nbsp; Noise: 10.0%<br>             Rel. Phase: -11° &nbsp;|&nbsp; Capacitors: 171<br>             FDX-B: 9% &nbsp;|&nbsp; Temp: 19.3°C<br>             Tuning: Tuning</div>`)[0];
+                popup_9b293d34d832f6dac7655f227c27c60f.setContent(html_c2404b0e3f7434140f6c4ddc7241de72);
             
         
 
-        marker_923d4d290a35eb8f13bf9a13347d193f.bindPopup(popup_34c610bd6d52e967e067bcbda08ebddd)
+        marker_8690990529f57c763d20adeeb90f1500.bindPopup(popup_9b293d34d832f6dac7655f227c27c60f)
         ;
 
         
     
     
-                marker_923d4d290a35eb8f13bf9a13347d193f.setIcon(icon_4f546c994890d9970fad4fd65acedf59);
+                marker_8690990529f57c763d20adeeb90f1500.setIcon(icon_e72731d867751f4e4fe114486d809262);
             
     
-            var marker_be1a9dc3c5e3c65bd568b5522937d52f = L.marker(
+            var marker_fc02e322f782a238f631b01ea11a7b68 = L.marker(
                 [46.149515, -123.373128],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_a912684076f01ddea446b9a905271710 = L.AwesomeMarkers.icon(
+            var icon_389cdca2f47208199902d19922797071 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -1252,34 +1460,34 @@
             );
         
     
-        var popup_4f91b386aad527b5b9e7d2051e560991 = L.popup({
+        var popup_a4368233f77353aa422c5958c4ebafa3 = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_27d8e96fff1e7580eb8273fd621d44f7 = $(`<div id="html_27d8e96fff1e7580eb8273fd621d44f7" style="width: 100.0%; height: 100.0%;">             <b>PD8 – Antenna 01</b><br>             <a href="PD8_antenna_01_tag_summary.html">View Tag Summary</a><br>             <a href="MPD8_N01_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:24:51.020 PST)</span><br>             Current: 7.9 A &nbsp;|&nbsp; Noise: 7.0%<br>             Rel. Phase: -9° &nbsp;|&nbsp; Capacitors: 172<br>             FDX-B: 7% &nbsp;|&nbsp; Temp: 22.7°C<br>             Tuning: Tuning</div>`)[0];
-                popup_4f91b386aad527b5b9e7d2051e560991.setContent(html_27d8e96fff1e7580eb8273fd621d44f7);
+                var html_2232dde90ea6879c418c240f62264615 = $(`<div id="html_2232dde90ea6879c418c240f62264615" style="width: 100.0%; height: 100.0%;">             <b>PD8 – Antenna 01</b><br>             <a href="PD8_antenna_01_tag_summary.html">View Tag Summary</a><br>             <a href="MPD8_N01_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:34:51.020 PST)</span><br>             Current: 8.4 A &nbsp;|&nbsp; Noise: 8.0%<br>             Rel. Phase: +5° &nbsp;|&nbsp; Capacitors: 173<br>             FDX-B: 7% &nbsp;|&nbsp; Temp: 21.7°C<br>             Tuning: Tuning</div>`)[0];
+                popup_a4368233f77353aa422c5958c4ebafa3.setContent(html_2232dde90ea6879c418c240f62264615);
             
         
 
-        marker_be1a9dc3c5e3c65bd568b5522937d52f.bindPopup(popup_4f91b386aad527b5b9e7d2051e560991)
+        marker_fc02e322f782a238f631b01ea11a7b68.bindPopup(popup_a4368233f77353aa422c5958c4ebafa3)
         ;
 
         
     
     
-                marker_be1a9dc3c5e3c65bd568b5522937d52f.setIcon(icon_a912684076f01ddea446b9a905271710);
+                marker_fc02e322f782a238f631b01ea11a7b68.setIcon(icon_389cdca2f47208199902d19922797071);
             
     
-            var marker_561dce90d4b2bb10178b3754848ef5eb = L.marker(
+            var marker_642cd648e1af2aebf2793f3b408f67ef = L.marker(
                 [46.149507, -123.373331],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_3e76c3856c66a093d42f26e25f01e55b = L.AwesomeMarkers.icon(
+            var icon_417731f6480e588d345c3d111d451dca = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -1290,34 +1498,34 @@
             );
         
     
-        var popup_2a0b288015ddd2057e3fc4cb88b7b4d0 = L.popup({
+        var popup_bca8cbb820b7a0513d666aaf53b0c19a = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_97c84ff5234b4ec00c593d677652ca3d = $(`<div id="html_97c84ff5234b4ec00c593d677652ca3d" style="width: 100.0%; height: 100.0%;">             <b>PD8 – Antenna 02</b><br>             <a href="PD8_antenna_02_tag_summary.html">View Tag Summary</a><br>             <a href="MPD8_N02_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:24:51.020 PST)</span><br>             Current: 7.4 A &nbsp;|&nbsp; Noise: 8.0%<br>             Rel. Phase: -4° &nbsp;|&nbsp; Capacitors: 196<br>             FDX-B: 13% &nbsp;|&nbsp; Temp: 18.1°C<br>             Tuning: Tuning</div>`)[0];
-                popup_2a0b288015ddd2057e3fc4cb88b7b4d0.setContent(html_97c84ff5234b4ec00c593d677652ca3d);
+                var html_fc48c40e5ccf20d80903efc11f3d6248 = $(`<div id="html_fc48c40e5ccf20d80903efc11f3d6248" style="width: 100.0%; height: 100.0%;">             <b>PD8 – Antenna 02</b><br>             <a href="PD8_antenna_02_tag_summary.html">View Tag Summary</a><br>             <a href="MPD8_N02_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:34:51.020 PST)</span><br>             Current: 8.5 A &nbsp;|&nbsp; Noise: 9.0%<br>             Rel. Phase: +4° &nbsp;|&nbsp; Capacitors: 197<br>             FDX-B: 10% &nbsp;|&nbsp; Temp: 16.8°C<br>             Tuning: Tuning</div>`)[0];
+                popup_bca8cbb820b7a0513d666aaf53b0c19a.setContent(html_fc48c40e5ccf20d80903efc11f3d6248);
             
         
 
-        marker_561dce90d4b2bb10178b3754848ef5eb.bindPopup(popup_2a0b288015ddd2057e3fc4cb88b7b4d0)
+        marker_642cd648e1af2aebf2793f3b408f67ef.bindPopup(popup_bca8cbb820b7a0513d666aaf53b0c19a)
         ;
 
         
     
     
-                marker_561dce90d4b2bb10178b3754848ef5eb.setIcon(icon_3e76c3856c66a093d42f26e25f01e55b);
+                marker_642cd648e1af2aebf2793f3b408f67ef.setIcon(icon_417731f6480e588d345c3d111d451dca);
             
     
-            var marker_d38021df44ad36c1d62479201908eda3 = L.marker(
+            var marker_b422e9ab1626f798710f2f4e6e77b6be = L.marker(
                 [46.149457, -123.373552],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_415e0b0325cf01b4832eb52fd0378ee4 = L.AwesomeMarkers.icon(
+            var icon_bad15657a7cc5e1839fd3b413bde6604 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -1328,34 +1536,34 @@
             );
         
     
-        var popup_64a300fac3139d035c089f270a47ab52 = L.popup({
+        var popup_fec10624cc5b3f101bd6cf3dcd9372f0 = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_5b18c5b805f6621c195bf06bea7b96ce = $(`<div id="html_5b18c5b805f6621c195bf06bea7b96ce" style="width: 100.0%; height: 100.0%;">             <b>PD8 – Antenna 04</b><br>             <a href="PD8_antenna_04_tag_summary.html">View Tag Summary</a><br>             <a href="MPD8_N04_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:24:51.020 PST)</span><br>             Current: 7.8 A &nbsp;|&nbsp; Noise: 8.0%<br>             Rel. Phase: +2° &nbsp;|&nbsp; Capacitors: 196<br>             FDX-B: 8% &nbsp;|&nbsp; Temp: 20.8°C<br>             Tuning: Tuning</div>`)[0];
-                popup_64a300fac3139d035c089f270a47ab52.setContent(html_5b18c5b805f6621c195bf06bea7b96ce);
+                var html_54eb4e3867aff334665aa65b6532d7d5 = $(`<div id="html_54eb4e3867aff334665aa65b6532d7d5" style="width: 100.0%; height: 100.0%;">             <b>PD8 – Antenna 04</b><br>             <a href="PD8_antenna_04_tag_summary.html">View Tag Summary</a><br>             <a href="MPD8_N04_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:34:51.020 PST)</span><br>             Current: 7.7 A &nbsp;|&nbsp; Noise: 9.0%<br>             Rel. Phase: +1° &nbsp;|&nbsp; Capacitors: 197<br>             FDX-B: 8% &nbsp;|&nbsp; Temp: 20.7°C<br>             Tuning: Tuning</div>`)[0];
+                popup_fec10624cc5b3f101bd6cf3dcd9372f0.setContent(html_54eb4e3867aff334665aa65b6532d7d5);
             
         
 
-        marker_d38021df44ad36c1d62479201908eda3.bindPopup(popup_64a300fac3139d035c089f270a47ab52)
+        marker_b422e9ab1626f798710f2f4e6e77b6be.bindPopup(popup_fec10624cc5b3f101bd6cf3dcd9372f0)
         ;
 
         
     
     
-                marker_d38021df44ad36c1d62479201908eda3.setIcon(icon_415e0b0325cf01b4832eb52fd0378ee4);
+                marker_b422e9ab1626f798710f2f4e6e77b6be.setIcon(icon_bad15657a7cc5e1839fd3b413bde6604);
             
     
-            var marker_cba2f82368b7bbda27834a2c57b45e31 = L.marker(
+            var marker_7bca27484c5ba1ec1fe3c0e111c4a892 = L.marker(
                 [46.149386, -123.373536],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_626a93bd0c6a64dc23c46c5865ba17c2 = L.AwesomeMarkers.icon(
+            var icon_9e11df5767b01bdaadc74e78ead9b16b = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -1366,34 +1574,34 @@
             );
         
     
-        var popup_999609ef4d96efe15ba379887fd42adf = L.popup({
+        var popup_5fd01566682286e0e9002a1e637255e7 = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_43367826598dae5e18ae39a9130d698a = $(`<div id="html_43367826598dae5e18ae39a9130d698a" style="width: 100.0%; height: 100.0%;">             <b>PD8 – Antenna 05</b><br>             <a href="PD8_antenna_05_tag_summary.html">View Tag Summary</a><br>             <a href="MPD8_N05_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:24:51.020 PST)</span><br>             Current: 7.5 A &nbsp;|&nbsp; Noise: 10.0%<br>             Rel. Phase: +4° &nbsp;|&nbsp; Capacitors: 215<br>             FDX-B: 10% &nbsp;|&nbsp; Temp: 20.4°C<br>             Tuning: Tuning</div>`)[0];
-                popup_999609ef4d96efe15ba379887fd42adf.setContent(html_43367826598dae5e18ae39a9130d698a);
+                var html_84f4baf16649b233cc0385f9384a9f79 = $(`<div id="html_84f4baf16649b233cc0385f9384a9f79" style="width: 100.0%; height: 100.0%;">             <b>PD8 – Antenna 05</b><br>             <a href="PD8_antenna_05_tag_summary.html">View Tag Summary</a><br>             <a href="MPD8_N05_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:34:51.020 PST)</span><br>             Current: 7.9 A &nbsp;|&nbsp; Noise: 12.0%<br>             Rel. Phase: -2° &nbsp;|&nbsp; Capacitors: 219<br>             FDX-B: 13% &nbsp;|&nbsp; Temp: 19.1°C<br>             Tuning: Tuning</div>`)[0];
+                popup_5fd01566682286e0e9002a1e637255e7.setContent(html_84f4baf16649b233cc0385f9384a9f79);
             
         
 
-        marker_cba2f82368b7bbda27834a2c57b45e31.bindPopup(popup_999609ef4d96efe15ba379887fd42adf)
+        marker_7bca27484c5ba1ec1fe3c0e111c4a892.bindPopup(popup_5fd01566682286e0e9002a1e637255e7)
         ;
 
         
     
     
-                marker_cba2f82368b7bbda27834a2c57b45e31.setIcon(icon_626a93bd0c6a64dc23c46c5865ba17c2);
+                marker_7bca27484c5ba1ec1fe3c0e111c4a892.setIcon(icon_9e11df5767b01bdaadc74e78ead9b16b);
             
     
-            var marker_08fad769b07ba3497d8efcf05c2b81e8 = L.marker(
+            var marker_7db6ec8e0f51766126768d14c7251484 = L.marker(
                 [46.151747, -123.297075],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_f72f9034b89fba175700ab36faf72d6b = L.AwesomeMarkers.icon(
+            var icon_10f8741688eccf9e5e1330d0e509e26a = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -1404,34 +1612,34 @@
             );
         
     
-        var popup_2b6a92dae9fd9b92ced808a508e13570 = L.popup({
+        var popup_252b7258ac495f684ca6bfeadff32a55 = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_4e11d06e2238872794b3558e3fb2e283 = $(`<div id="html_4e11d06e2238872794b3558e3fb2e283" style="width: 100.0%; height: 100.0%;">             <b>PDC – Antenna 01</b><br>             <a href="PDC_antenna_01_tag_summary.html">View Tag Summary</a><br>             <a href="MPDC_N01_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:22:32.020 PST)</span><br>             Current: 8.2 A &nbsp;|&nbsp; Noise: 8.0%<br>             Rel. Phase: +5° &nbsp;|&nbsp; Capacitors: 195<br>             FDX-B: 10% &nbsp;|&nbsp; Temp: 17.6°C<br>             Tuning: Tuning</div>`)[0];
-                popup_2b6a92dae9fd9b92ced808a508e13570.setContent(html_4e11d06e2238872794b3558e3fb2e283);
+                var html_290d757cb6bca7a591fa5576f7aeba05 = $(`<div id="html_290d757cb6bca7a591fa5576f7aeba05" style="width: 100.0%; height: 100.0%;">             <b>PDC – Antenna 01</b><br>             <a href="PDC_antenna_01_tag_summary.html">View Tag Summary</a><br>             <a href="MPDC_N01_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:42:32.020 PST)</span><br>             Current: 8.5 A &nbsp;|&nbsp; Noise: 9.0%<br>             Rel. Phase: -2° &nbsp;|&nbsp; Capacitors: 187<br>             FDX-B: 15% &nbsp;|&nbsp; Temp: 17.6°C<br>             Tuning: Tuning</div>`)[0];
+                popup_252b7258ac495f684ca6bfeadff32a55.setContent(html_290d757cb6bca7a591fa5576f7aeba05);
             
         
 
-        marker_08fad769b07ba3497d8efcf05c2b81e8.bindPopup(popup_2b6a92dae9fd9b92ced808a508e13570)
+        marker_7db6ec8e0f51766126768d14c7251484.bindPopup(popup_252b7258ac495f684ca6bfeadff32a55)
         ;
 
         
     
     
-                marker_08fad769b07ba3497d8efcf05c2b81e8.setIcon(icon_f72f9034b89fba175700ab36faf72d6b);
+                marker_7db6ec8e0f51766126768d14c7251484.setIcon(icon_10f8741688eccf9e5e1330d0e509e26a);
             
     
-            var marker_0dfead000df1abf5d2cd9c9a05a065cc = L.marker(
+            var marker_35b2befeabf1b0c37e1afe47c857c067 = L.marker(
                 [46.152147, -123.297075],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_8e77b5c26f0100b72df0bd77e2fdb543 = L.AwesomeMarkers.icon(
+            var icon_e00c78ee693334a92bd3ab5033df8d8f = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -1442,34 +1650,34 @@
             );
         
     
-        var popup_888eb90f5deac8e76b6c32e7e4e5d756 = L.popup({
+        var popup_9dfc7af43c652287b575e65900fe78ff = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_f18ca0168b8812e7947dd70e75a199cd = $(`<div id="html_f18ca0168b8812e7947dd70e75a199cd" style="width: 100.0%; height: 100.0%;">             <b>PDC – Antenna 02</b><br>             <a href="PDC_antenna_02_tag_summary.html">View Tag Summary</a><br>             <a href="MPDC_N02_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:22:32.020 PST)</span><br>             Current: 7.7 A &nbsp;|&nbsp; Noise: 7.0%<br>             Rel. Phase: +0° &nbsp;|&nbsp; Capacitors: 200<br>             FDX-B: 6% &nbsp;|&nbsp; Temp: 17.1°C<br>             Tuning: Tuning</div>`)[0];
-                popup_888eb90f5deac8e76b6c32e7e4e5d756.setContent(html_f18ca0168b8812e7947dd70e75a199cd);
+                var html_19be9b83a8e75b1a71565b9627194ac8 = $(`<div id="html_19be9b83a8e75b1a71565b9627194ac8" style="width: 100.0%; height: 100.0%;">             <b>PDC – Antenna 02</b><br>             <a href="PDC_antenna_02_tag_summary.html">View Tag Summary</a><br>             <a href="MPDC_N02_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:42:32.020 PST)</span><br>             Current: 7.9 A &nbsp;|&nbsp; Noise: 10.0%<br>             Rel. Phase: +9° &nbsp;|&nbsp; Capacitors: 203<br>             FDX-B: 27% &nbsp;|&nbsp; Temp: 17.0°C<br>             Tuning: Code 4</div>`)[0];
+                popup_9dfc7af43c652287b575e65900fe78ff.setContent(html_19be9b83a8e75b1a71565b9627194ac8);
             
         
 
-        marker_0dfead000df1abf5d2cd9c9a05a065cc.bindPopup(popup_888eb90f5deac8e76b6c32e7e4e5d756)
+        marker_35b2befeabf1b0c37e1afe47c857c067.bindPopup(popup_9dfc7af43c652287b575e65900fe78ff)
         ;
 
         
     
     
-                marker_0dfead000df1abf5d2cd9c9a05a065cc.setIcon(icon_8e77b5c26f0100b72df0bd77e2fdb543);
+                marker_35b2befeabf1b0c37e1afe47c857c067.setIcon(icon_e00c78ee693334a92bd3ab5033df8d8f);
             
     
-            var marker_ee3fd9964dc1a6b7a09d9c18fe24a9b3 = L.marker(
+            var marker_a6af751e2bb4fe5de1326cc09bc8d6fc = L.marker(
                 [46.152547, -123.297075],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_d3816ef3791273da12b109d6e9a8cc06 = L.AwesomeMarkers.icon(
+            var icon_00ca43b13dc99a0afacf734b808c3293 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -1480,34 +1688,34 @@
             );
         
     
-        var popup_e28b2e33e4e909a733f250275fde8ee9 = L.popup({
+        var popup_dc7ec49cd93e856bdf2cc694ece25ddc = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_50e0b49e777e3412a796323a1443ae49 = $(`<div id="html_50e0b49e777e3412a796323a1443ae49" style="width: 100.0%; height: 100.0%;">             <b>PDC – Antenna 03</b><br>             <a href="PDC_antenna_03_tag_summary.html">View Tag Summary</a><br>             <a href="MPDC_N03_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:22:32.020 PST)</span><br>             Current: 7.9 A &nbsp;|&nbsp; Noise: 7.0%<br>             Rel. Phase: -1° &nbsp;|&nbsp; Capacitors: 168<br>             FDX-B: 7% &nbsp;|&nbsp; Temp: 19.1°C<br>             Tuning: Tuning</div>`)[0];
-                popup_e28b2e33e4e909a733f250275fde8ee9.setContent(html_50e0b49e777e3412a796323a1443ae49);
+                var html_2d4b83e7d0afc9accabec3316fe856b7 = $(`<div id="html_2d4b83e7d0afc9accabec3316fe856b7" style="width: 100.0%; height: 100.0%;">             <b>PDC – Antenna 03</b><br>             <a href="PDC_antenna_03_tag_summary.html">View Tag Summary</a><br>             <a href="MPDC_N03_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:42:32.020 PST)</span><br>             Current: 8.3 A &nbsp;|&nbsp; Noise: 10.0%<br>             Rel. Phase: +2° &nbsp;|&nbsp; Capacitors: 176<br>             FDX-B: 8% &nbsp;|&nbsp; Temp: 18.1°C<br>             Tuning: Code 4</div>`)[0];
+                popup_dc7ec49cd93e856bdf2cc694ece25ddc.setContent(html_2d4b83e7d0afc9accabec3316fe856b7);
             
         
 
-        marker_ee3fd9964dc1a6b7a09d9c18fe24a9b3.bindPopup(popup_e28b2e33e4e909a733f250275fde8ee9)
+        marker_a6af751e2bb4fe5de1326cc09bc8d6fc.bindPopup(popup_dc7ec49cd93e856bdf2cc694ece25ddc)
         ;
 
         
     
     
-                marker_ee3fd9964dc1a6b7a09d9c18fe24a9b3.setIcon(icon_d3816ef3791273da12b109d6e9a8cc06);
+                marker_a6af751e2bb4fe5de1326cc09bc8d6fc.setIcon(icon_00ca43b13dc99a0afacf734b808c3293);
             
     
-            var marker_4ed494bdb06c37814d560f89ad0e6c2c = L.marker(
+            var marker_3518d1ecd4b36d39e3a97e32e32d4e86 = L.marker(
                 [46.149107, -123.297125],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_307388ea6b994eca4da24e3532bc2a74 = L.AwesomeMarkers.icon(
+            var icon_6b0ffec251d14fd82ddad39ac822fe7c = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -1518,34 +1726,34 @@
             );
         
     
-        var popup_7d2c306d94222a1f0fcebc18325cf26d = L.popup({
+        var popup_0dd044bcd08df36645f3d2ebe501971e = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_66576fcacc82bbd947fa74dce5f688d3 = $(`<div id="html_66576fcacc82bbd947fa74dce5f688d3" style="width: 100.0%; height: 100.0%;">             <b>PDO – Antenna 01</b><br>             <a href="PDO_antenna_01_tag_summary.html">View Tag Summary</a><br>             <a href="MPDO_N01_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:18:02.020 PST)</span><br>             Current: 7.6 A &nbsp;|&nbsp; Noise: 8.0%<br>             Rel. Phase: +4° &nbsp;|&nbsp; Capacitors: 206<br>             FDX-B: 8% &nbsp;|&nbsp; Temp: 18.0°C<br>             Tuning: Tuning</div>`)[0];
-                popup_7d2c306d94222a1f0fcebc18325cf26d.setContent(html_66576fcacc82bbd947fa74dce5f688d3);
+                var html_7447002bde3e1923b0891d6754220eff = $(`<div id="html_7447002bde3e1923b0891d6754220eff" style="width: 100.0%; height: 100.0%;">             <b>PDO – Antenna 01</b><br>             <a href="PDO_antenna_01_tag_summary.html">View Tag Summary</a><br>             <a href="MPDO_N01_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:28:02.020 PST)</span><br>             Current: 7.6 A &nbsp;|&nbsp; Noise: 8.0%<br>             Rel. Phase: -2° &nbsp;|&nbsp; Capacitors: 216<br>             FDX-B: 8% &nbsp;|&nbsp; Temp: 18.0°C<br>             Tuning: Tuning</div>`)[0];
+                popup_0dd044bcd08df36645f3d2ebe501971e.setContent(html_7447002bde3e1923b0891d6754220eff);
             
         
 
-        marker_4ed494bdb06c37814d560f89ad0e6c2c.bindPopup(popup_7d2c306d94222a1f0fcebc18325cf26d)
+        marker_3518d1ecd4b36d39e3a97e32e32d4e86.bindPopup(popup_0dd044bcd08df36645f3d2ebe501971e)
         ;
 
         
     
     
-                marker_4ed494bdb06c37814d560f89ad0e6c2c.setIcon(icon_307388ea6b994eca4da24e3532bc2a74);
+                marker_3518d1ecd4b36d39e3a97e32e32d4e86.setIcon(icon_6b0ffec251d14fd82ddad39ac822fe7c);
             
     
-            var marker_fe5b34205a1100c432aab689866df874 = L.marker(
+            var marker_d12f55c1c991830f46e8480e4bebac3e = L.marker(
                 [46.149507, -123.297125],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_5a76500534016ba99d27673e89846298 = L.AwesomeMarkers.icon(
+            var icon_4117329d8e32083e4cb10c30a3af0339 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "red",
   "iconColor": "white",
@@ -1556,34 +1764,34 @@
             );
         
     
-        var popup_8208262d349e680a49cdb93e14c6a1c3 = L.popup({
+        var popup_e2124dbaa7faf882e2f08026e4414e21 = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_a1ec849c8b44c4358dd9267c185d9827 = $(`<div id="html_a1ec849c8b44c4358dd9267c185d9827" style="width: 100.0%; height: 100.0%;">             <b>PDO – Antenna 02</b><br>             <a href="PDO_antenna_02_tag_summary.html">View Tag Summary</a><br>             <a href="MPDO_N02_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:18:02.020 PST)</span><br>             Current: 8.0 A &nbsp;|&nbsp; Noise: 100.0%<br>             Rel. Phase: +2° &nbsp;|&nbsp; Capacitors: 214<br>             FDX-B: 100% &nbsp;|&nbsp; Temp: 20.0°C<br>             Tuning: Tuning</div>`)[0];
-                popup_8208262d349e680a49cdb93e14c6a1c3.setContent(html_a1ec849c8b44c4358dd9267c185d9827);
+                var html_5bac49370834dce3747d596d289e2e0a = $(`<div id="html_5bac49370834dce3747d596d289e2e0a" style="width: 100.0%; height: 100.0%;">             <b>PDO – Antenna 02</b><br>             <a href="PDO_antenna_02_tag_summary.html">View Tag Summary</a><br>             <a href="MPDO_N02_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:28:02.020 PST)</span><br>             Current: 8.4 A &nbsp;|&nbsp; Noise: 100.0%<br>             Rel. Phase: -7° &nbsp;|&nbsp; Capacitors: 229<br>             FDX-B: 100% &nbsp;|&nbsp; Temp: 18.9°C<br>             Tuning: Tuning</div>`)[0];
+                popup_e2124dbaa7faf882e2f08026e4414e21.setContent(html_5bac49370834dce3747d596d289e2e0a);
             
         
 
-        marker_fe5b34205a1100c432aab689866df874.bindPopup(popup_8208262d349e680a49cdb93e14c6a1c3)
+        marker_d12f55c1c991830f46e8480e4bebac3e.bindPopup(popup_e2124dbaa7faf882e2f08026e4414e21)
         ;
 
         
     
     
-                marker_fe5b34205a1100c432aab689866df874.setIcon(icon_5a76500534016ba99d27673e89846298);
+                marker_d12f55c1c991830f46e8480e4bebac3e.setIcon(icon_4117329d8e32083e4cb10c30a3af0339);
             
     
-            var marker_569d867358385daf3b455d536e3f2af8 = L.marker(
+            var marker_fac61265fed3ade003831df0ef395804 = L.marker(
                 [46.149907, -123.297125],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_3e9464d639d0f59e61febb281ed02299 = L.AwesomeMarkers.icon(
+            var icon_0bf0e37ec773aee0b5e233f2bf55266e = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -1594,36 +1802,36 @@
             );
         
     
-        var popup_d95aa400372985f3bed0f980e7daeba4 = L.popup({
+        var popup_858a58da9adfddf725d0db1a4feb5221 = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_8385a009ab01860c118637c8ed10fe28 = $(`<div id="html_8385a009ab01860c118637c8ed10fe28" style="width: 100.0%; height: 100.0%;">             <b>PDO – Antenna 03</b><br>             <a href="PDO_antenna_03_tag_summary.html">View Tag Summary</a><br>             <a href="MPDO_N03_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:18:02.020 PST)</span><br>             Current: 7.3 A &nbsp;|&nbsp; Noise: 8.0%<br>             Rel. Phase: +2° &nbsp;|&nbsp; Capacitors: 178<br>             FDX-B: 7% &nbsp;|&nbsp; Temp: 22.7°C<br>             Tuning: Tuning</div>`)[0];
-                popup_d95aa400372985f3bed0f980e7daeba4.setContent(html_8385a009ab01860c118637c8ed10fe28);
+                var html_bcb29c9f934a975de5f48187ca784df6 = $(`<div id="html_bcb29c9f934a975de5f48187ca784df6" style="width: 100.0%; height: 100.0%;">             <b>PDO – Antenna 03</b><br>             <a href="PDO_antenna_03_tag_summary.html">View Tag Summary</a><br>             <a href="MPDO_N03_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:28:02.020 PST)</span><br>             Current: 7.6 A &nbsp;|&nbsp; Noise: 9.0%<br>             Rel. Phase: +1° &nbsp;|&nbsp; Capacitors: 188<br>             FDX-B: 7% &nbsp;|&nbsp; Temp: 21.7°C<br>             Tuning: Tuning</div>`)[0];
+                popup_858a58da9adfddf725d0db1a4feb5221.setContent(html_bcb29c9f934a975de5f48187ca784df6);
             
         
 
-        marker_569d867358385daf3b455d536e3f2af8.bindPopup(popup_d95aa400372985f3bed0f980e7daeba4)
+        marker_fac61265fed3ade003831df0ef395804.bindPopup(popup_858a58da9adfddf725d0db1a4feb5221)
         ;
 
         
     
     
-                marker_569d867358385daf3b455d536e3f2af8.setIcon(icon_3e9464d639d0f59e61febb281ed02299);
+                marker_fac61265fed3ade003831df0ef395804.setIcon(icon_0bf0e37ec773aee0b5e233f2bf55266e);
             
     
-            var marker_23d18a84ed489ea05d501312eb9271e1 = L.marker(
+            var marker_952475c48c4ac54177efe91b200e7ef7 = L.marker(
                 [46.150594, -123.30561],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_ef2b4666fadfbc6eb06c2f918c44380f = L.AwesomeMarkers.icon(
+            var icon_4244cd5e20ecc231d5c571aa149746bf = L.AwesomeMarkers.icon(
                 {
-  "markerColor": "red",
+  "markerColor": "orange",
   "iconColor": "white",
   "icon": "info-sign",
   "prefix": "glyphicon",
@@ -1632,34 +1840,34 @@
             );
         
     
-        var popup_d1c30bcc4b622bb3038b819f5eb1fa63 = L.popup({
+        var popup_a14591a847869ff8051ee80179cdea11 = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_7ad8898404331420e14fc6f31f2eae2b = $(`<div id="html_7ad8898404331420e14fc6f31f2eae2b" style="width: 100.0%; height: 100.0%;">             <b>PDW – Antenna 01</b><br>             <a href="PDW_antenna_01_tag_summary.html">View Tag Summary</a><br>             <a href="MPDW_N01_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:24:01.010 PST)</span><br>             Current: 7.9 A &nbsp;|&nbsp; Noise: 23.0%<br>             Rel. Phase: +7° &nbsp;|&nbsp; Capacitors: 211<br>             FDX-B: 23% &nbsp;|&nbsp; Temp: 21.2°C<br>             Tuning: Tuning</div>`)[0];
-                popup_d1c30bcc4b622bb3038b819f5eb1fa63.setContent(html_7ad8898404331420e14fc6f31f2eae2b);
+                var html_0cdf48ec127143885815cc484fbb3b04 = $(`<div id="html_0cdf48ec127143885815cc484fbb3b04" style="width: 100.0%; height: 100.0%;">             <b>PDW – Antenna 01</b><br>             <a href="PDW_antenna_01_tag_summary.html">View Tag Summary</a><br>             <a href="MPDW_N01_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:34:01.010 PST)</span><br>             Current: 7.9 A &nbsp;|&nbsp; Noise: 18.0%<br>             Rel. Phase: +5° &nbsp;|&nbsp; Capacitors: 218<br>             FDX-B: 13% &nbsp;|&nbsp; Temp: 20.7°C<br>             Tuning: Tuning</div>`)[0];
+                popup_a14591a847869ff8051ee80179cdea11.setContent(html_0cdf48ec127143885815cc484fbb3b04);
             
         
 
-        marker_23d18a84ed489ea05d501312eb9271e1.bindPopup(popup_d1c30bcc4b622bb3038b819f5eb1fa63)
+        marker_952475c48c4ac54177efe91b200e7ef7.bindPopup(popup_a14591a847869ff8051ee80179cdea11)
         ;
 
         
     
     
-                marker_23d18a84ed489ea05d501312eb9271e1.setIcon(icon_ef2b4666fadfbc6eb06c2f918c44380f);
+                marker_952475c48c4ac54177efe91b200e7ef7.setIcon(icon_4244cd5e20ecc231d5c571aa149746bf);
             
     
-            var marker_de2bebbf95c2dd7fa3e3a16d835a83c9 = L.marker(
+            var marker_3e8845c4c55512d53b8f0e41f10b34a1 = L.marker(
                 [46.15047, -123.305638],
                 {
 }
-            ).addTo(feature_group_5ea4223369622930e102bdfa3afa3fdb);
+            ).addTo(feature_group_37e55390aa6214782cf3d218b062ebf8);
         
     
-            var icon_5b5821ed739a25cf786a0812e6cf9844 = L.AwesomeMarkers.icon(
+            var icon_f7e5209f3302e2df4ceb45925503ac4d = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -1670,34 +1878,34 @@
             );
         
     
-        var popup_21bb88823773071dd5a302542ee7c03a = L.popup({
+        var popup_26a6eac90c02b917f6ba094bdc676c60 = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_494b5b4d23ee343217add32bcc477fcb = $(`<div id="html_494b5b4d23ee343217add32bcc477fcb" style="width: 100.0%; height: 100.0%;">             <b>PDW – Antenna 02</b><br>             <a href="PDW_antenna_02_tag_summary.html">View Tag Summary</a><br>             <a href="MPDW_N02_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:24:01.010 PST)</span><br>             Current: 8.6 A &nbsp;|&nbsp; Noise: 10.0%<br>             Rel. Phase: +6° &nbsp;|&nbsp; Capacitors: 206<br>             FDX-B: 10% &nbsp;|&nbsp; Temp: 20.2°C<br>             Tuning: Tuning</div>`)[0];
-                popup_21bb88823773071dd5a302542ee7c03a.setContent(html_494b5b4d23ee343217add32bcc477fcb);
+                var html_6f1c9a325798e9d134c49808b0faaf25 = $(`<div id="html_6f1c9a325798e9d134c49808b0faaf25" style="width: 100.0%; height: 100.0%;">             <b>PDW – Antenna 02</b><br>             <a href="PDW_antenna_02_tag_summary.html">View Tag Summary</a><br>             <a href="MPDW_N02_antenna_performance.html">View Antenna Performance</a>                          <hr style="margin:4px 0;border-color:#ccc;">             <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:34:01.010 PST)</span><br>             Current: 8.9 A &nbsp;|&nbsp; Noise: 12.0%<br>             Rel. Phase: -2° &nbsp;|&nbsp; Capacitors: 220<br>             FDX-B: 12% &nbsp;|&nbsp; Temp: 19.3°C<br>             Tuning: Tuning</div>`)[0];
+                popup_26a6eac90c02b917f6ba094bdc676c60.setContent(html_6f1c9a325798e9d134c49808b0faaf25);
             
         
 
-        marker_de2bebbf95c2dd7fa3e3a16d835a83c9.bindPopup(popup_21bb88823773071dd5a302542ee7c03a)
+        marker_3e8845c4c55512d53b8f0e41f10b34a1.bindPopup(popup_26a6eac90c02b917f6ba094bdc676c60)
         ;
 
         
     
     
-                marker_de2bebbf95c2dd7fa3e3a16d835a83c9.setIcon(icon_5b5821ed739a25cf786a0812e6cf9844);
+                marker_3e8845c4c55512d53b8f0e41f10b34a1.setIcon(icon_f7e5209f3302e2df4ceb45925503ac4d);
             
     
-            var marker_01803dbdbc7cb25ac74ab1797e2687a6 = L.marker(
+            var marker_3e1fff1b88a5a740cd5b7d5e9a8fadda = L.marker(
                 [46.252577, -123.436736],
                 {
 }
-            ).addTo(map_2c1808f0130028c781db44927fd6b025);
+            ).addTo(map_d56aa6516213c578b8e8b845bec44e9d);
         
     
-            var icon_de78d4355512ca4fa382753ef2b5ce9a = L.AwesomeMarkers.icon(
+            var icon_d76946b2da0f2f5ec7561bb8295572a4 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -1708,34 +1916,34 @@
             );
         
     
-        var popup_6a8f4ee9a451ea0b87a090a54ce591d7 = L.popup({
+        var popup_c79958378b455e0d4570461c06852458 = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_e73bdd4f0f61ef018f33a78e097bfc0b = $(`<div id="html_e73bdd4f0f61ef018f33a78e097bfc0b" style="width: 100.0%; height: 100.0%;">             <b>Site: PD4</b><br>             Tags detected (2026): 83<br>             <a href="PD4_tag_summary.html">View Tag Summary</a><br>             <a href="PD4_site_performance.html">View Site Performance</a><br>             <a href="PD4_site_settings.html">View Site Settings</a>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>MC Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:28:01.010 PST)</span><br>             <table style="font-size:11px;width:100%;border-collapse:collapse;margin:2px 0;">               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Op Status:</td><td style="padding:1px 0;">2</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Memory:</td><td>0%</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Voltage:</td><td style="padding:1px 0;">24.2V</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Detections:</td><td>718</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Temp:</td><td style="padding:1px 0;" colspan="4">20.9°C</td></tr>             </table>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>Alarms (Last 7 Days)</b><br>             <span style="font-size:10px;">Total: 1936</span><br>             <div style="font-size:10px;margin-top:2px;line-height:1.3;">• Node Antenna Current Exceeded 10.0 A<br>• Node Antenna Current Exceeded 10.0 A Node Antenna Current...<br>• Node Antenna Current Low<br>• Node Antenna Out Of Tune Or Disconnected<br>• Node Antenna Out Of Tune, Decrease Capacitance</div></div>`)[0];
-                popup_6a8f4ee9a451ea0b87a090a54ce591d7.setContent(html_e73bdd4f0f61ef018f33a78e097bfc0b);
+                var html_76f6bda00a39271f58ec3bfc363cd189 = $(`<div id="html_76f6bda00a39271f58ec3bfc363cd189" style="width: 100.0%; height: 100.0%;">             <b>Site: PD4</b><br>             Tags detected (2026): 87<br>             <a href="PD4_tag_summary.html">View Tag Summary</a><br>             <a href="PD4_site_performance.html">View Site Performance</a><br>             <a href="PD4_site_settings.html">View Site Settings</a>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>MC Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:38:01.010 PST)</span><br>             <table style="font-size:11px;width:100%;border-collapse:collapse;margin:2px 0;">               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Op Status:</td><td style="padding:1px 0;">2</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Memory:</td><td>0%</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Voltage:</td><td style="padding:1px 0;">24.2V</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Detections:</td><td>722</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Temp:</td><td style="padding:1px 0;" colspan="4">20.7°C</td></tr>             </table>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>Alarms (Last 7 Days)</b><br>             <span style="font-size:10px;">Total: 1953</span><br>             <div style="font-size:10px;margin-top:2px;line-height:1.3;">• Node Antenna Current Exceeded 10.0 A<br>• Node Antenna Current Exceeded 10.0 A Node Antenna Current...<br>• Node Antenna Current Low<br>• Node Antenna Out Of Tune Or Disconnected<br>• Node Antenna Out Of Tune, Decrease Capacitance</div></div>`)[0];
+                popup_c79958378b455e0d4570461c06852458.setContent(html_76f6bda00a39271f58ec3bfc363cd189);
             
         
 
-        marker_01803dbdbc7cb25ac74ab1797e2687a6.bindPopup(popup_6a8f4ee9a451ea0b87a090a54ce591d7)
+        marker_3e1fff1b88a5a740cd5b7d5e9a8fadda.bindPopup(popup_c79958378b455e0d4570461c06852458)
         ;
 
         
     
     
-                marker_01803dbdbc7cb25ac74ab1797e2687a6.setIcon(icon_de78d4355512ca4fa382753ef2b5ce9a);
+                marker_3e1fff1b88a5a740cd5b7d5e9a8fadda.setIcon(icon_d76946b2da0f2f5ec7561bb8295572a4);
             
     
-            var marker_b70b01255a6d2074c8afec19be267025 = L.marker(
+            var marker_4dd81d77f86bfd4c75eed42f9bcc0c40 = L.marker(
                 [46.205, -123.431],
                 {
 }
-            ).addTo(map_2c1808f0130028c781db44927fd6b025);
+            ).addTo(map_d56aa6516213c578b8e8b845bec44e9d);
         
     
-            var icon_0be54705c262ee247d3b771bf0a27f2d = L.AwesomeMarkers.icon(
+            var icon_8b9fdf2adad81dbe69f5224129abd49c = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -1746,34 +1954,34 @@
             );
         
     
-        var popup_d9adec81ca43bd9648f842a946e83ed7 = L.popup({
+        var popup_990a563854925212a4a8e9c0eafceb72 = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_65b9f01dc0cf21087fb25552d599c4d7 = $(`<div id="html_65b9f01dc0cf21087fb25552d599c4d7" style="width: 100.0%; height: 100.0%;">             <b>Site: PD5</b><br>             Tags detected (2026): 1921<br>             <a href="PD5_tag_summary.html">View Tag Summary</a><br>             <a href="PD5_site_performance.html">View Site Performance</a><br>             <a href="PD5_site_settings.html">View Site Settings</a>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>MC Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:21:15.030 PST)</span><br>             <table style="font-size:11px;width:100%;border-collapse:collapse;margin:2px 0;">               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Op Status:</td><td style="padding:1px 0;">2</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Memory:</td><td>1%</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Voltage:</td><td style="padding:1px 0;">24.3V</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Detections:</td><td>9117</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Temp:</td><td style="padding:1px 0;" colspan="4">22.9°C</td></tr>             </table>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>Alarms (Last 7 Days)</b><br>             <span style="font-size:10px;">Total: 30914</span><br>             <div style="font-size:10px;margin-top:2px;line-height:1.3;">• Node Antenna Current Exceeded 10.0 A<br>• Node Antenna Current Exceeded 10.0 A Node Antenna Current...<br>• Node Antenna Current Exceeded 10.0 A Node Antenna Out Of ...<br>• Node Antenna Current Exceeded 10.0 A Node Noise High<br>• Node Antenna Current Exceeded 10.0 A Node Tuning Capacita...</div></div>`)[0];
-                popup_d9adec81ca43bd9648f842a946e83ed7.setContent(html_65b9f01dc0cf21087fb25552d599c4d7);
+                var html_134e034194e13acdc463415b83cafc20 = $(`<div id="html_134e034194e13acdc463415b83cafc20" style="width: 100.0%; height: 100.0%;">             <b>Site: PD5</b><br>             Tags detected (2026): 1931<br>             <a href="PD5_tag_summary.html">View Tag Summary</a><br>             <a href="PD5_site_performance.html">View Site Performance</a><br>             <a href="PD5_site_settings.html">View Site Settings</a>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>MC Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:31:15.030 PST)</span><br>             <table style="font-size:11px;width:100%;border-collapse:collapse;margin:2px 0;">               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Op Status:</td><td style="padding:1px 0;">2</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Memory:</td><td>1%</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Voltage:</td><td style="padding:1px 0;">24.3V</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Detections:</td><td>9131</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Temp:</td><td style="padding:1px 0;" colspan="4">22.3°C</td></tr>             </table>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>Alarms (Last 7 Days)</b><br>             <span style="font-size:10px;">Total: 30941</span><br>             <div style="font-size:10px;margin-top:2px;line-height:1.3;">• Node Antenna Current Exceeded 10.0 A<br>• Node Antenna Current Exceeded 10.0 A Node Antenna Current...<br>• Node Antenna Current Exceeded 10.0 A Node Antenna Out Of ...<br>• Node Antenna Current Exceeded 10.0 A Node Noise High<br>• Node Antenna Current Exceeded 10.0 A Node Tuning Capacita...</div></div>`)[0];
+                popup_990a563854925212a4a8e9c0eafceb72.setContent(html_134e034194e13acdc463415b83cafc20);
             
         
 
-        marker_b70b01255a6d2074c8afec19be267025.bindPopup(popup_d9adec81ca43bd9648f842a946e83ed7)
+        marker_4dd81d77f86bfd4c75eed42f9bcc0c40.bindPopup(popup_990a563854925212a4a8e9c0eafceb72)
         ;
 
         
     
     
-                marker_b70b01255a6d2074c8afec19be267025.setIcon(icon_0be54705c262ee247d3b771bf0a27f2d);
+                marker_4dd81d77f86bfd4c75eed42f9bcc0c40.setIcon(icon_8b9fdf2adad81dbe69f5224129abd49c);
             
     
-            var marker_6dbb698ea9672a3b091af08ef07845e7 = L.marker(
+            var marker_6b600307eb8d19a468ffd9a1f551e853 = L.marker(
                 [46.152, -123.385],
                 {
 }
-            ).addTo(map_2c1808f0130028c781db44927fd6b025);
+            ).addTo(map_d56aa6516213c578b8e8b845bec44e9d);
         
     
-            var icon_f5c7a48d241f1f241450f34759563563 = L.AwesomeMarkers.icon(
+            var icon_9de9518691b29f79a5177c30c5ea5c8f = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -1784,34 +1992,34 @@
             );
         
     
-        var popup_1793a68e1dd85e69a085b17505aacf9c = L.popup({
+        var popup_e53e1fdea2c682d42be2ab98be50119f = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_352d8945012994b83c34b135beb4d74c = $(`<div id="html_352d8945012994b83c34b135beb4d74c" style="width: 100.0%; height: 100.0%;">             <b>Site: PD6</b><br>             Tags detected (2026): 1425<br>             <a href="PD6_tag_summary.html">View Tag Summary</a><br>             <a href="PD6_site_performance.html">View Site Performance</a><br>             <a href="PD6_site_settings.html">View Site Settings</a>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>MC Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:24:00.030 PST)</span><br>             <table style="font-size:11px;width:100%;border-collapse:collapse;margin:2px 0;">               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Op Status:</td><td style="padding:1px 0;">2</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Memory:</td><td>1%</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Voltage:</td><td style="padding:1px 0;">23.5V</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Detections:</td><td>57</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Temp:</td><td style="padding:1px 0;" colspan="4">22.1°C</td></tr>             </table>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>Alarms (Last 7 Days)</b><br>             <span style="font-size:10px;">Total: 19683</span><br>             <div style="font-size:10px;margin-top:2px;line-height:1.3;">• Controller Forced To Standby<br>• Node Antenna Current Exceeded 10.0 A<br>• Node Antenna Current Exceeded 10.0 A Node Antenna Current...<br>• Node Antenna Current Exceeded 10.0 A Node VTT Single Shot...<br>• Node Antenna Current Exceeded 10.0 A Node VTT Test Passed</div></div>`)[0];
-                popup_1793a68e1dd85e69a085b17505aacf9c.setContent(html_352d8945012994b83c34b135beb4d74c);
+                var html_be5870814eeafc40127b27ea2702d6e8 = $(`<div id="html_be5870814eeafc40127b27ea2702d6e8" style="width: 100.0%; height: 100.0%;">             <b>Site: PD6</b><br>             Tags detected (2026): 1427<br>             <a href="PD6_tag_summary.html">View Tag Summary</a><br>             <a href="PD6_site_performance.html">View Site Performance</a><br>             <a href="PD6_site_settings.html">View Site Settings</a>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>MC Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:34:00.030 PST)</span><br>             <table style="font-size:11px;width:100%;border-collapse:collapse;margin:2px 0;">               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Op Status:</td><td style="padding:1px 0;">2</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Memory:</td><td>1%</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Voltage:</td><td style="padding:1px 0;">23.6V</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Detections:</td><td>60</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Temp:</td><td style="padding:1px 0;" colspan="4">21.2°C</td></tr>             </table>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>Alarms (Last 7 Days)</b><br>             <span style="font-size:10px;">Total: 20123</span><br>             <div style="font-size:10px;margin-top:2px;line-height:1.3;">• Controller Forced To Standby<br>• Node Antenna Current Exceeded 10.0 A<br>• Node Antenna Current Exceeded 10.0 A Node Antenna Current...<br>• Node Antenna Current Exceeded 10.0 A Node VTT Single Shot...<br>• Node Antenna Current Exceeded 10.0 A Node VTT Test Passed</div></div>`)[0];
+                popup_e53e1fdea2c682d42be2ab98be50119f.setContent(html_be5870814eeafc40127b27ea2702d6e8);
             
         
 
-        marker_6dbb698ea9672a3b091af08ef07845e7.bindPopup(popup_1793a68e1dd85e69a085b17505aacf9c)
+        marker_6b600307eb8d19a468ffd9a1f551e853.bindPopup(popup_e53e1fdea2c682d42be2ab98be50119f)
         ;
 
         
     
     
-                marker_6dbb698ea9672a3b091af08ef07845e7.setIcon(icon_f5c7a48d241f1f241450f34759563563);
+                marker_6b600307eb8d19a468ffd9a1f551e853.setIcon(icon_9de9518691b29f79a5177c30c5ea5c8f);
             
     
-            var marker_76df8aeda0f11a491ed247c01e8d78d3 = L.marker(
+            var marker_0ad629b5a5eaf845d8de5b3eae7ed5dd = L.marker(
                 [46.146, -123.38],
                 {
 }
-            ).addTo(map_2c1808f0130028c781db44927fd6b025);
+            ).addTo(map_d56aa6516213c578b8e8b845bec44e9d);
         
     
-            var icon_de392c14a678c4c92294c51574c51096 = L.AwesomeMarkers.icon(
+            var icon_02da60235a74cc2b0055d255f1371602 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -1822,34 +2030,34 @@
             );
         
     
-        var popup_efb8aa24b894cfcb91382c3437db9b8a = L.popup({
+        var popup_811723c489788d428d29f25e9904212f = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_4b95ab0ea52987e43c26963e1fc7d621 = $(`<div id="html_4b95ab0ea52987e43c26963e1fc7d621" style="width: 100.0%; height: 100.0%;">             <b>Site: PD7</b><br>             Tags detected (2026): 197<br>             <a href="PD7_tag_summary.html">View Tag Summary</a><br>             <a href="PD7_site_performance.html">View Site Performance</a><br>             <a href="PD7_site_settings.html">View Site Settings</a>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>MC Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:16:57.020 PST)</span><br>             <table style="font-size:11px;width:100%;border-collapse:collapse;margin:2px 0;">               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Op Status:</td><td style="padding:1px 0;">2</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Memory:</td><td>0%</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Voltage:</td><td style="padding:1px 0;">25.3V</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Detections:</td><td>266</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Temp:</td><td style="padding:1px 0;" colspan="4">23.5°C</td></tr>             </table>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>Alarms (Last 7 Days)</b><br>             <span style="font-size:10px;">Total: 313</span><br>             <div style="font-size:10px;margin-top:2px;line-height:1.3;">• Node Noise High<br>• Node VTT Test Failed</div></div>`)[0];
-                popup_efb8aa24b894cfcb91382c3437db9b8a.setContent(html_4b95ab0ea52987e43c26963e1fc7d621);
+                var html_d5504557f98603ed261e6d40cfdac6f8 = $(`<div id="html_d5504557f98603ed261e6d40cfdac6f8" style="width: 100.0%; height: 100.0%;">             <b>Site: PD7</b><br>             Tags detected (2026): 198<br>             <a href="PD7_tag_summary.html">View Tag Summary</a><br>             <a href="PD7_site_performance.html">View Site Performance</a><br>             <a href="PD7_site_settings.html">View Site Settings</a>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>MC Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:36:57.020 PST)</span><br>             <table style="font-size:11px;width:100%;border-collapse:collapse;margin:2px 0;">               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Op Status:</td><td style="padding:1px 0;">2</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Memory:</td><td>0%</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Voltage:</td><td style="padding:1px 0;">25.3V</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Detections:</td><td>267</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Temp:</td><td style="padding:1px 0;" colspan="4">23.4°C</td></tr>             </table>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>Alarms (Last 7 Days)</b><br>             <span style="font-size:10px;">Total: 323</span><br>             <div style="font-size:10px;margin-top:2px;line-height:1.3;">• Node Noise High<br>• Node VTT Test Failed</div></div>`)[0];
+                popup_811723c489788d428d29f25e9904212f.setContent(html_d5504557f98603ed261e6d40cfdac6f8);
             
         
 
-        marker_76df8aeda0f11a491ed247c01e8d78d3.bindPopup(popup_efb8aa24b894cfcb91382c3437db9b8a)
+        marker_0ad629b5a5eaf845d8de5b3eae7ed5dd.bindPopup(popup_811723c489788d428d29f25e9904212f)
         ;
 
         
     
     
-                marker_76df8aeda0f11a491ed247c01e8d78d3.setIcon(icon_de392c14a678c4c92294c51574c51096);
+                marker_0ad629b5a5eaf845d8de5b3eae7ed5dd.setIcon(icon_02da60235a74cc2b0055d255f1371602);
             
     
-            var marker_830c783b152de7a2a4e1259aaf895f12 = L.marker(
+            var marker_da52208bec37ed70328150c6822333a9 = L.marker(
                 [46.149, -123.375],
                 {
 }
-            ).addTo(map_2c1808f0130028c781db44927fd6b025);
+            ).addTo(map_d56aa6516213c578b8e8b845bec44e9d);
         
     
-            var icon_b131107403928bc46ca4b8c6c2f989d2 = L.AwesomeMarkers.icon(
+            var icon_34e2e6f82158891b7ae8f332d6656752 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -1860,34 +2068,34 @@
             );
         
     
-        var popup_1ef1a676119adb5e88ff760d1acd9be4 = L.popup({
+        var popup_5e19a708ed0b80e861748eca0091bdcf = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_5d9a41a8618f5c68cfdf59300231778e = $(`<div id="html_5d9a41a8618f5c68cfdf59300231778e" style="width: 100.0%; height: 100.0%;">             <b>Site: PD8</b><br>             Tags detected (2026): 869<br>             <a href="PD8_tag_summary.html">View Tag Summary</a><br>             <a href="PD8_site_performance.html">View Site Performance</a><br>             <a href="PD8_site_settings.html">View Site Settings</a>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>MC Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:24:51.020 PST)</span><br>             <table style="font-size:11px;width:100%;border-collapse:collapse;margin:2px 0;">               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Op Status:</td><td style="padding:1px 0;">2</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Memory:</td><td>0%</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Voltage:</td><td style="padding:1px 0;">24.8V</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Detections:</td><td>364</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Temp:</td><td style="padding:1px 0;" colspan="4">21.1°C</td></tr>             </table>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>Alarms (Last 7 Days)</b><br>             <span style="font-size:10px;">Total: 2148</span><br>             <div style="font-size:10px;margin-top:2px;line-height:1.3;">• Node Antenna Current Exceeded 10.0 A<br>• Node Antenna Current Low<br>• Node Antenna Out Of Tune Or Disconnected<br>• Node Antenna Out Of Tune, Decrease Capacitance<br>• Node Exciter Voltage Low</div></div>`)[0];
-                popup_1ef1a676119adb5e88ff760d1acd9be4.setContent(html_5d9a41a8618f5c68cfdf59300231778e);
+                var html_9f9c0738de0212f60ba8be234863a4d9 = $(`<div id="html_9f9c0738de0212f60ba8be234863a4d9" style="width: 100.0%; height: 100.0%;">             <b>Site: PD8</b><br>             Tags detected (2026): 880<br>             <a href="PD8_tag_summary.html">View Tag Summary</a><br>             <a href="PD8_site_performance.html">View Site Performance</a><br>             <a href="PD8_site_settings.html">View Site Settings</a>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>MC Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:34:51.020 PST)</span><br>             <table style="font-size:11px;width:100%;border-collapse:collapse;margin:2px 0;">               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Op Status:</td><td style="padding:1px 0;">2</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Memory:</td><td>0%</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Voltage:</td><td style="padding:1px 0;">24.8V</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Detections:</td><td>381</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Temp:</td><td style="padding:1px 0;" colspan="4">20.4°C</td></tr>             </table>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>Alarms (Last 7 Days)</b><br>             <span style="font-size:10px;">Total: 2175</span><br>             <div style="font-size:10px;margin-top:2px;line-height:1.3;">• Node Antenna Current Exceeded 10.0 A<br>• Node Antenna Current Low<br>• Node Antenna Out Of Tune Or Disconnected<br>• Node Antenna Out Of Tune, Decrease Capacitance<br>• Node Exciter Voltage Low</div></div>`)[0];
+                popup_5e19a708ed0b80e861748eca0091bdcf.setContent(html_9f9c0738de0212f60ba8be234863a4d9);
             
         
 
-        marker_830c783b152de7a2a4e1259aaf895f12.bindPopup(popup_1ef1a676119adb5e88ff760d1acd9be4)
+        marker_da52208bec37ed70328150c6822333a9.bindPopup(popup_5e19a708ed0b80e861748eca0091bdcf)
         ;
 
         
     
     
-                marker_830c783b152de7a2a4e1259aaf895f12.setIcon(icon_b131107403928bc46ca4b8c6c2f989d2);
+                marker_da52208bec37ed70328150c6822333a9.setIcon(icon_34e2e6f82158891b7ae8f332d6656752);
             
     
-            var marker_3225f4ab98f95f22df4841863deecee1 = L.marker(
+            var marker_d22a8c316ec7e537425777b69036c55d = L.marker(
                 [46.150247, -123.297075],
                 {
 }
-            ).addTo(map_2c1808f0130028c781db44927fd6b025);
+            ).addTo(map_d56aa6516213c578b8e8b845bec44e9d);
         
     
-            var icon_ebe53ae14ff59260c219cf7a606f4773 = L.AwesomeMarkers.icon(
+            var icon_7ec12511fe26074b7bfb9306546ce52d = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -1898,34 +2106,34 @@
             );
         
     
-        var popup_93d58063234468e660eac87374c502c5 = L.popup({
+        var popup_9ec3be2b5bf7db9850f6b050bcea4a6e = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_20870f06819c79876cb15641c8edabce = $(`<div id="html_20870f06819c79876cb15641c8edabce" style="width: 100.0%; height: 100.0%;">             <b>Site: PDC</b><br>             Tags detected (2026): 890<br>             <a href="PDC_tag_summary.html">View Tag Summary</a><br>             <a href="PDC_site_performance.html">View Site Performance</a><br>             <a href="PDC_site_settings.html">View Site Settings</a>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>MC Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:22:32.020 PST)</span><br>             <table style="font-size:11px;width:100%;border-collapse:collapse;margin:2px 0;">               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Op Status:</td><td style="padding:1px 0;">2</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Memory:</td><td>0%</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Voltage:</td><td style="padding:1px 0;">25.1V</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Detections:</td><td>4594</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Temp:</td><td style="padding:1px 0;" colspan="4">20.9°C</td></tr>             </table>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>Alarms (Last 7 Days)</b><br>             <span style="font-size:10px;">Total: 296</span><br>             <div style="font-size:10px;margin-top:2px;line-height:1.3;">• Node VTT Test Failed</div></div>`)[0];
-                popup_93d58063234468e660eac87374c502c5.setContent(html_20870f06819c79876cb15641c8edabce);
+                var html_89fbc62467c1df5491eecd99aa5fa230 = $(`<div id="html_89fbc62467c1df5491eecd99aa5fa230" style="width: 100.0%; height: 100.0%;">             <b>Site: PDC</b><br>             Tags detected (2026): 891<br>             <a href="PDC_tag_summary.html">View Tag Summary</a><br>             <a href="PDC_site_performance.html">View Site Performance</a><br>             <a href="PDC_site_settings.html">View Site Settings</a>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>MC Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:42:32.020 PST)</span><br>             <table style="font-size:11px;width:100%;border-collapse:collapse;margin:2px 0;">               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Op Status:</td><td style="padding:1px 0;">2</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Memory:</td><td>0%</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Voltage:</td><td style="padding:1px 0;">25.1V</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Detections:</td><td>4597</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Temp:</td><td style="padding:1px 0;" colspan="4">20.2°C</td></tr>             </table>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>Alarms (Last 7 Days)</b><br>             <span style="font-size:10px;">Total: 304</span><br>             <div style="font-size:10px;margin-top:2px;line-height:1.3;">• Node VTT Test Failed</div></div>`)[0];
+                popup_9ec3be2b5bf7db9850f6b050bcea4a6e.setContent(html_89fbc62467c1df5491eecd99aa5fa230);
             
         
 
-        marker_3225f4ab98f95f22df4841863deecee1.bindPopup(popup_93d58063234468e660eac87374c502c5)
+        marker_d22a8c316ec7e537425777b69036c55d.bindPopup(popup_9ec3be2b5bf7db9850f6b050bcea4a6e)
         ;
 
         
     
     
-                marker_3225f4ab98f95f22df4841863deecee1.setIcon(icon_ebe53ae14ff59260c219cf7a606f4773);
+                marker_d22a8c316ec7e537425777b69036c55d.setIcon(icon_7ec12511fe26074b7bfb9306546ce52d);
             
     
-            var marker_8f12b7eba8b7f2aa27c74fbd4967aabe = L.marker(
+            var marker_2a04c4d5dcb941dd6bc90192984d1779 = L.marker(
                 [46.147607, -123.297125],
                 {
 }
-            ).addTo(map_2c1808f0130028c781db44927fd6b025);
+            ).addTo(map_d56aa6516213c578b8e8b845bec44e9d);
         
     
-            var icon_8686b57381acc8e29eb4130b1183864f = L.AwesomeMarkers.icon(
+            var icon_b1911dfe1fa15c9a294d255a0dd5b8ed = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -1936,34 +2144,34 @@
             );
         
     
-        var popup_b5ebe470089d28da22a10aa6ef3d939b = L.popup({
+        var popup_828c16fae132d1aab1fc855b14392a20 = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_31b1657fb9a397d5a37df3273f299199 = $(`<div id="html_31b1657fb9a397d5a37df3273f299199" style="width: 100.0%; height: 100.0%;">             <b>Site: PDO</b><br>             Tags detected (2026): 1352<br>             <a href="PDO_tag_summary.html">View Tag Summary</a><br>             <a href="PDO_site_performance.html">View Site Performance</a><br>             <a href="PDO_site_settings.html">View Site Settings</a>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>MC Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:18:02.020 PST)</span><br>             <table style="font-size:11px;width:100%;border-collapse:collapse;margin:2px 0;">               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Op Status:</td><td style="padding:1px 0;">2</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Memory:</td><td>0%</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Voltage:</td><td style="padding:1px 0;">25.3V</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Detections:</td><td>6430</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Temp:</td><td style="padding:1px 0;" colspan="4">20.7°C</td></tr>             </table>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>Alarms (Last 7 Days)</b><br>             <span style="font-size:10px;">Total: 1207</span><br>             <div style="font-size:10px;margin-top:2px;line-height:1.3;">• Node Antenna Current Exceeded 10.0 A<br>• Node Noise High<br>• Node VTT Test Failed</div></div>`)[0];
-                popup_b5ebe470089d28da22a10aa6ef3d939b.setContent(html_31b1657fb9a397d5a37df3273f299199);
+                var html_e176e90d90603b8c46bed6b9b426b33a = $(`<div id="html_e176e90d90603b8c46bed6b9b426b33a" style="width: 100.0%; height: 100.0%;">             <b>Site: PDO</b><br>             Tags detected (2026): 1360<br>             <a href="PDO_tag_summary.html">View Tag Summary</a><br>             <a href="PDO_site_performance.html">View Site Performance</a><br>             <a href="PDO_site_settings.html">View Site Settings</a>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>MC Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:28:02.020 PST)</span><br>             <table style="font-size:11px;width:100%;border-collapse:collapse;margin:2px 0;">               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Op Status:</td><td style="padding:1px 0;">2</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Memory:</td><td>0%</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Voltage:</td><td style="padding:1px 0;">25.3V</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Detections:</td><td>6450</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Temp:</td><td style="padding:1px 0;" colspan="4">20.3°C</td></tr>             </table>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>Alarms (Last 7 Days)</b><br>             <span style="font-size:10px;">Total: 1273</span><br>             <div style="font-size:10px;margin-top:2px;line-height:1.3;">• Node Antenna Current Exceeded 10.0 A<br>• Node Noise High<br>• Node VTT Test Failed</div></div>`)[0];
+                popup_828c16fae132d1aab1fc855b14392a20.setContent(html_e176e90d90603b8c46bed6b9b426b33a);
             
         
 
-        marker_8f12b7eba8b7f2aa27c74fbd4967aabe.bindPopup(popup_b5ebe470089d28da22a10aa6ef3d939b)
+        marker_2a04c4d5dcb941dd6bc90192984d1779.bindPopup(popup_828c16fae132d1aab1fc855b14392a20)
         ;
 
         
     
     
-                marker_8f12b7eba8b7f2aa27c74fbd4967aabe.setIcon(icon_8686b57381acc8e29eb4130b1183864f);
+                marker_2a04c4d5dcb941dd6bc90192984d1779.setIcon(icon_b1911dfe1fa15c9a294d255a0dd5b8ed);
             
     
-            var marker_2cade4412d5660c636a9251a10561c17 = L.marker(
+            var marker_260b3b173c2efffcc1d7565bba019579 = L.marker(
                 [46.148, -123.305],
                 {
 }
-            ).addTo(map_2c1808f0130028c781db44927fd6b025);
+            ).addTo(map_d56aa6516213c578b8e8b845bec44e9d);
         
     
-            var icon_4894ee24bfa86a268e6d9e849c87021a = L.AwesomeMarkers.icon(
+            var icon_220ef71f514f2359aa2d263f389fc5d8 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "blue",
   "iconColor": "white",
@@ -1974,34 +2182,34 @@
             );
         
     
-        var popup_b28a3d13f5a7f5973fa24eaf284d747c = L.popup({
+        var popup_930402db86a7d2e20d136935d5ab6fc5 = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_2ba31a2c95155c83460424d3941d7def = $(`<div id="html_2ba31a2c95155c83460424d3941d7def" style="width: 100.0%; height: 100.0%;">             <b>Site: PDW</b><br>             Tags detected (2026): 742<br>             <a href="PDW_tag_summary.html">View Tag Summary</a><br>             <a href="PDW_site_performance.html">View Site Performance</a><br>             <a href="PDW_site_settings.html">View Site Settings</a>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>MC Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 20:24:01.010 PST)</span><br>             <table style="font-size:11px;width:100%;border-collapse:collapse;margin:2px 0;">               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Op Status:</td><td style="padding:1px 0;">2</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Memory:</td><td>0%</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Voltage:</td><td style="padding:1px 0;">25.2V</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Detections:</td><td>924</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Temp:</td><td style="padding:1px 0;" colspan="4">26.1°C</td></tr>             </table>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>Alarms (Last 7 Days)</b><br>             <span style="font-size:10px;">Total: 63</span><br>             <div style="font-size:10px;margin-top:2px;line-height:1.3;">• Node Noise High</div></div>`)[0];
-                popup_b28a3d13f5a7f5973fa24eaf284d747c.setContent(html_2ba31a2c95155c83460424d3941d7def);
+                var html_c0055d8b2a49d600bb25a29ff237b920 = $(`<div id="html_c0055d8b2a49d600bb25a29ff237b920" style="width: 100.0%; height: 100.0%;">             <b>Site: PDW</b><br>             Tags detected (2026): 756<br>             <a href="PDW_tag_summary.html">View Tag Summary</a><br>             <a href="PDW_site_performance.html">View Site Performance</a><br>             <a href="PDW_site_settings.html">View Site Settings</a>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>MC Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:34:01.010 PST)</span><br>             <table style="font-size:11px;width:100%;border-collapse:collapse;margin:2px 0;">               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Op Status:</td><td style="padding:1px 0;">2</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Memory:</td><td>0%</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Voltage:</td><td style="padding:1px 0;">25.2V</td><td style="padding:1px 10px 1px 4px;">|</td><td style="padding:1px 4px 1px 0;white-space:nowrap;">Detections:</td><td>935</td></tr>               <tr><td style="padding:1px 4px 1px 0;white-space:nowrap;">Temp:</td><td style="padding:1px 0;" colspan="4">25.5°C</td></tr>             </table>                          <hr style="margin:6px 0;border-color:#ccc;">             <b>Alarms (Last 7 Days)</b><br>             <span style="font-size:10px;">Total: 63</span><br>             <div style="font-size:10px;margin-top:2px;line-height:1.3;">• Node Noise High</div></div>`)[0];
+                popup_930402db86a7d2e20d136935d5ab6fc5.setContent(html_c0055d8b2a49d600bb25a29ff237b920);
             
         
 
-        marker_2cade4412d5660c636a9251a10561c17.bindPopup(popup_b28a3d13f5a7f5973fa24eaf284d747c)
+        marker_260b3b173c2efffcc1d7565bba019579.bindPopup(popup_930402db86a7d2e20d136935d5ab6fc5)
         ;
 
         
     
     
-                marker_2cade4412d5660c636a9251a10561c17.setIcon(icon_4894ee24bfa86a268e6d9e849c87021a);
+                marker_260b3b173c2efffcc1d7565bba019579.setIcon(icon_220ef71f514f2359aa2d263f389fc5d8);
             
     
-            var marker_6f9500553a0f2157a5cadda615686fb2 = L.marker(
+            var marker_f12d62bb546d7614a059c7182a5eadfc = L.marker(
                 [46.195503, -123.804593],
                 {
 }
-            ).addTo(map_2c1808f0130028c781db44927fd6b025);
+            ).addTo(map_d56aa6516213c578b8e8b845bec44e9d);
         
     
-            var icon_b2a66b20283bbce2f75dd9cc1bece1ed = L.AwesomeMarkers.icon(
+            var icon_bd228cbf286133dbb045b62e4b71778d = L.AwesomeMarkers.icon(
                 {
   "markerColor": "purple",
   "iconColor": "white",
@@ -2012,44 +2220,44 @@
             );
         
     
-        var popup_46d4dcbc3d5383a3cb4a373feac61117 = L.popup({
+        var popup_ee904481f56921f831ab2321aef24615 = L.popup({
   "maxWidth": 360,
 });
 
         
             
-                var html_57353cf110554369f5594f694ce8f578 = $(`<div id="html_57353cf110554369f5594f694ce8f578" style="width: 100.0%; height: 100.0%;">                 <b>🦭 PP1 – Pinniped Site</b><br>                 Tags detected (2026): 22<br>                 <a href="PP1_antenna_01_tag_summary.html">View Tag Summary</a><br>                 <a href="PP1_site_performance.html">View Site Performance</a>                                  <hr style="margin:6px 0;border-color:#ccc;">                 <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 21:26:36 PST)</span><br>                 Current: 9.0 A &nbsp;|&nbsp; Temp: 33.4°C<br>                 Tuning Phase: 391 &nbsp;|&nbsp; Rel. Phase: -2°<br>                 Capacitors: 143 &nbsp;|&nbsp; FDX-B: 13%<br>                 VE Level: 5/5 &nbsp;|&nbsp; Last Alarm: 21 – Reports Memory Full</div>`)[0];
-                popup_46d4dcbc3d5383a3cb4a373feac61117.setContent(html_57353cf110554369f5594f694ce8f578);
+                var html_b46e2b694cdcefca1752251dc2e91cd9 = $(`<div id="html_b46e2b694cdcefca1752251dc2e91cd9" style="width: 100.0%; height: 100.0%;">                 <b>🦭 PP1 – Pinniped Site</b><br>                 Tags detected (2026): 22<br>                 <a href="PP1_antenna_01_tag_summary.html">View Tag Summary</a><br>                 <a href="PP1_site_performance.html">View Site Performance</a>                                  <hr style="margin:6px 0;border-color:#ccc;">                 <b>Reader Status</b> <span style="font-size:10px;color:#888;">(2026-05-08 22:26:36 PST)</span><br>                 Current: 9.0 A &nbsp;|&nbsp; Temp: 33.4°C<br>                 Tuning Phase: 391 &nbsp;|&nbsp; Rel. Phase: -2°<br>                 Capacitors: 143 &nbsp;|&nbsp; FDX-B: 13%<br>                 VE Level: 5/5 &nbsp;|&nbsp; Last Alarm: 21 – Reports Memory Full</div>`)[0];
+                popup_ee904481f56921f831ab2321aef24615.setContent(html_b46e2b694cdcefca1752251dc2e91cd9);
             
         
 
-        marker_6f9500553a0f2157a5cadda615686fb2.bindPopup(popup_46d4dcbc3d5383a3cb4a373feac61117)
+        marker_f12d62bb546d7614a059c7182a5eadfc.bindPopup(popup_ee904481f56921f831ab2321aef24615)
         ;
 
         
     
     
-                marker_6f9500553a0f2157a5cadda615686fb2.setIcon(icon_b2a66b20283bbce2f75dd9cc1bece1ed);
+                marker_f12d62bb546d7614a059c7182a5eadfc.setIcon(icon_bd228cbf286133dbb045b62e4b71778d);
             
     
-            var layer_control_f329c942f5605a6f10c8be0a9e512c68_layers = {
+            var layer_control_abb949623ad21d1807b55c9681ea823f_layers = {
                 base_layers : {
-                    "OpenStreetMap" : tile_layer_34240dcb136a1c26fbb4354dcde74003,
-                    "Esri World Ocean Basemap" : tile_layer_7b1ee8caad08b688cd88246688779b27,
+                    "OpenStreetMap" : tile_layer_68a2a3c709c75b888a17e6d778992ab2,
+                    "Esri World Ocean Basemap" : tile_layer_795704151186bce2274e9d25d158309d,
                 },
                 overlays :  {
-                    "Antennas" : feature_group_5ea4223369622930e102bdfa3afa3fdb,
+                    "Antennas" : feature_group_37e55390aa6214782cf3d218b062ebf8,
                 },
             };
-            let layer_control_f329c942f5605a6f10c8be0a9e512c68 = L.control.layers(
-                layer_control_f329c942f5605a6f10c8be0a9e512c68_layers.base_layers,
-                layer_control_f329c942f5605a6f10c8be0a9e512c68_layers.overlays,
+            let layer_control_abb949623ad21d1807b55c9681ea823f = L.control.layers(
+                layer_control_abb949623ad21d1807b55c9681ea823f_layers.base_layers,
+                layer_control_abb949623ad21d1807b55c9681ea823f_layers.overlays,
                 {
   "position": "topright",
   "collapsed": true,
   "autoZIndex": true,
 }
-            ).addTo(map_2c1808f0130028c781db44927fd6b025);
+            ).addTo(map_d56aa6516213c578b8e8b845bec44e9d);
 
         
 </script>
